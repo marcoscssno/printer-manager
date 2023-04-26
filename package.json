@@ -2,6 +2,9 @@
   "name": "scrape-printer-supply",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --ignore-watch node_modules --respawn --transpile-only index.ts"
+  },
   "author": "Marcos Cassiano (marcoscssno@gmail.com)",
   "license": "MIT",
   "devDependencies": {
