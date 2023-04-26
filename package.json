@@ -1,0 +1,10 @@
+{
+  "name": "scrape-printer-supply",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Marcos Cassiano (marcoscssno@gmail.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
+}
