@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer';
-import * as cheerio from 'cheerio';
 import { PrinterSuppliesDTO } from './PrinterSuppliesDTO';
 
 class CheckPrinterSuppliesService {
@@ -10,12 +9,12 @@ class CheckPrinterSuppliesService {
             const browser = await puppeteer.launch({ headless: "new", args: ['--proxy-server="192.168.14.1:3128" --proxy-bypass-list="192.168.14.*,192.168.8.*"'] });
             const page = await browser.newPage();
             await page.goto(url);
-            await page.waitForSelector('li#TonerSupplies');
-            const htmlContent = await page.content();
-            const $ = cheerio.load(htmlContent);
-            const tonerLevel = $('li#TonerSupplies > div > div > div.contentBody > div > div > div.progress-slider > span').text();
-            const pcdrumLevel = $('li#PCDrumStatus > div > div > div.contentBody > div > div > div.progress-slider > span').text();
-            const fuserLevel = $('li#FuserSuppliesStatus > div > div > div.contentBody > div > div > div.progress-slider > span').text();
+            const toner = await page.waitForSelector('li#TonerSupplies > div > div > div.contentBody > div > div > div.progress-slider > span');
+            const tonerLevel = await toner?.evaluate(el => el.textContent)!;
+            const pcdrum = await page.waitForSelector('li#PCDrumStatus > div > div > div.contentBody > div > div > div.progress-slider > span');
+            const pcdrumLevel = await pcdrum?.evaluate(el => el.textContent)!;
+            const fuser = await page.waitForSelector('li#FuserSuppliesStatus > div > div > div.contentBody > div > div > div.progress-slider > span');
+            const fuserLevel = await fuser?.evaluate(el => el.textContent)!;
             await browser.close();
             return {
                 tonerLevel,
