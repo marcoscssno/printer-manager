@@ -1,10 +1,10 @@
 import { PrinterSuppliesDTO } from "../service/PrinterSuppliesDTO"
 
-interface PrinterSupplyVerificationInterface {
+interface PrinterSupplyVerificationRepositoryInterface {
     register(data: PrinterSuppliesDTO): Promise<void>;
     findAll(): Promise<any[] | []>;
 }
 
 export {
-    PrinterSupplyVerificationInterface
+    PrinterSupplyVerificationRepositoryInterface
 }
