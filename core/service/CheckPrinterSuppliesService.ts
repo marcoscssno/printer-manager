@@ -33,8 +33,8 @@ class CheckPrinterSuppliesService {
                 pcdrumLevel: null,
                 fuserLevel: null,
                 checkedAt: date,
-                error: false,
-                errorMessage: null,
+                error: true,
+                errorMessage: error.message,
             }
         }
     }
