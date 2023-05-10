@@ -1,4 +1,4 @@
-import { Printer } from "../entity/printer/Printer";
+import { Printer } from "../../entity/printer/Printer";
 
 interface PrinterRepositoryInterface {
     save(printer: Printer): Promise<void>;

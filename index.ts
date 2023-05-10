@@ -1,4 +1,4 @@
-import { MongoDBPrinterSupplyVerificationRepository } from "./core/repository/implementation/MongoDBPrinterSupplyVerificationRepository";
+import { MongoDBPrinterSupplyVerificationRepository } from "./core/repository/printerSupplyVerification/implementation/MongoDBPrinterSupplyVerificationRepository";
 import { CheckPrinterSuppliesService } from "./core/service/CheckPrinterSuppliesService";
 import { mongoDBHelper } from './core/helper/MongoDBHelper';
 

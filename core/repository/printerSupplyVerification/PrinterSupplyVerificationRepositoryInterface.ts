@@ -1,4 +1,4 @@
-import { PrinterSuppliesDTO } from "../service/PrinterSuppliesDTO"
+import { PrinterSuppliesDTO } from "../../service/PrinterSuppliesDTO"
 
 interface PrinterSupplyVerificationRepositoryInterface {
     register(data: PrinterSuppliesDTO): Promise<void>;
