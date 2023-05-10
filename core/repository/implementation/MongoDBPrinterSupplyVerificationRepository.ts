@@ -1,6 +1,6 @@
 import { PrinterSuppliesDTO } from "../../service/PrinterSuppliesDTO";
 import { PrinterSupplyVerificationRepositoryInterface } from "../PrinterSupplyVerificationRepositoryInterface";
-import { mongoDBHelper } from "../../helpers/MongoDBHelper";
+import { mongoDBHelper } from "../../helper/MongoDBHelper";
 
 class MongoDBPrinterSupplyVerificationRepository implements PrinterSupplyVerificationRepositoryInterface {
     async register(data: PrinterSuppliesDTO): Promise<void> {

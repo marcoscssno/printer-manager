@@ -1,6 +1,6 @@
 import { Printer } from "../../entity/printer/Printer";
 import { PrinterRepositoryInterface } from "../PrinterRepositoryInterface";
-import { mongoDBHelper } from "../../helpers/MongoDBHelper";
+import { mongoDBHelper } from "../../helper/MongoDBHelper";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async save(printer: Printer): Promise<void> {
