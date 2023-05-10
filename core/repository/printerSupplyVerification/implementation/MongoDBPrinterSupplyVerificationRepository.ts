@@ -1,4 +1,4 @@
-import { PrinterSuppliesDTO } from "../../../service/PrinterSuppliesDTO";
+import { PrinterSuppliesDTO } from "../../../service/checkPrinterSupply/PrinterSuppliesDTO";
 import { PrinterSupplyVerificationRepositoryInterface } from "../PrinterSupplyVerificationRepositoryInterface";
 import { mongoDBHelper } from "../../../helper/MongoDBHelper";
 
