@@ -1,4 +1,4 @@
-import { PrinterSupply } from "./PrinterSupply"
+import { PrinterSupply } from "../printerSupply/PrinterSupply"
 
 interface PrinterProperties {
     id?: string,

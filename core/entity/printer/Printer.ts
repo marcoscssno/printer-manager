@@ -1,4 +1,4 @@
-import { PrinterSupply } from "./PrinterSupply";
+import { PrinterSupply } from "../printerSupply/PrinterSupply";
 import { PrinterProperties } from './PrinterProperties';
 import { v4 as uuidv4 } from 'uuid';
 
