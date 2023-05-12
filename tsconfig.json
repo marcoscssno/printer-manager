@@ -6,6 +6,7 @@
             "@helper/*": ["core/helper/*"],
             "@repository/*": ["core/repository/*"],
             "@service/*": ["core/service/*"],
+            "@useCase/*": ["core/useCase/*"],
         },
         "esModuleInterop": true
     }
