@@ -1,6 +1,6 @@
-import { MongoDBPrinterSupplyVerificationRepository } from "./core/repository/printerSupplyVerification/implementation/MongoDBPrinterSupplyVerificationRepository";
-import { CheckPrinterSuppliesService } from "./core/service/checkPrinterSupply/CheckPrinterSuppliesService";
-import { mongoDBHelper } from './core/helper/MongoDBHelper';
+import { MongoDBPrinterSupplyVerificationRepository } from "@repository/printerSupplyVerification/implementation/MongoDBPrinterSupplyVerificationRepository";
+import { CheckPrinterSuppliesService } from "@service/checkPrinterSupply/CheckPrinterSuppliesService";
+import { mongoDBHelper } from '@helper/MongoDBHelper';
 
 (async () => {
     await mongoDBHelper.connect();
