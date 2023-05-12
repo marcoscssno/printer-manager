@@ -1,7 +1,6 @@
 import { PrinterSupply } from "../printerSupply/PrinterSupply"
 
 interface PrinterProperties {
-    id?: string,
     ipAddress?: string | null,
     manufacturer: string,
     model: string,
