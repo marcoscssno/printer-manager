@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@entity/*": ["core/entity/*"],
+            "@helper/*": ["core/helper/*"],
+            "@repository/*": ["core/repository/*"],
+            "@service/*": ["core/service/*"],
+        },
+        "esModuleInterop": true
+    }
+}
