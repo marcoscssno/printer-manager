@@ -1,12 +1,15 @@
 import { PrinterSuppliesDTO } from "../../../service/checkPrinterSupply/PrinterSuppliesDTO";
 import { PrinterSupplyVerificationRepositoryInterface } from "../PrinterSupplyVerificationRepositoryInterface";
-import { mongoDBHelper } from "../../../helper/MongoDBHelper";
+import { MongoClient } from "mongodb";
 
 class MongoDBPrinterSupplyVerificationRepository implements PrinterSupplyVerificationRepositoryInterface {
+    private client: MongoClient;
+    constructor(client: MongoClient) {
+        this.client = client;
+    }
     async register(data: PrinterSuppliesDTO): Promise<void> {
-        const client = mongoDBHelper.getClient();
         try {
-            await client.db('printers').collection('printers').insertOne(data);
+            await this.client.db('printers').collection('printerSupplyVerifications').insertOne(data);
         }
         catch(error) {
             console.error(error);
@@ -14,8 +17,7 @@ class MongoDBPrinterSupplyVerificationRepository implements PrinterSupplyVerific
     }
     async findAll(): Promise<any[] | []> {
         try {
-            const client = mongoDBHelper.getClient();
-            const printerSupplyVerifications = await client.db('printers').collection('printers').find().toArray();
+            const printerSupplyVerifications = await this.client.db('printers').collection('printerSupplyVerifications').find().toArray();
             return printerSupplyVerifications;
         }
         catch(error) {
