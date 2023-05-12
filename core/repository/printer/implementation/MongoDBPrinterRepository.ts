@@ -3,6 +3,10 @@ import { PrinterRepositoryInterface } from "../PrinterRepositoryInterface";
 import { mongoDBHelper } from "../../../helper/MongoDBHelper";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
+    private uri: string;
+    constructor(uri: string) {
+        this.uri = uri;
+    }
     async save(printer: Printer): Promise<void> {
         const client = mongoDBHelper.getClient();
         try {
