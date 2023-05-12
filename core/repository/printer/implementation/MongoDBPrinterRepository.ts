@@ -1,14 +1,13 @@
 import { Printer } from "../../../entity/printer/Printer";
 import { PrinterRepositoryInterface } from "../PrinterRepositoryInterface";
-import { mongoDBHelper } from "../../../helper/MongoDBHelper";
+import { MongoClient } from "mongodb";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
-    private uri: string;
-    constructor(uri: string) {
-        this.uri = uri;
+    private client: MongoClient;
+    constructor(client: MongoClient) {
+        this.client = client;
     }
     async save(printer: Printer): Promise<void> {
-        const client = mongoDBHelper.getClient();
         try {
             const newPrinter = {
                 _id: printer.getId(),
@@ -26,7 +25,7 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
                 deletedAt: printer.getDeletedAt()
             }
             console.log(newPrinter);
-            await client.db('printers').collection<{_id: string}>('myPrinters').insertOne(newPrinter);
+            await this.client.db('printers').collection<{_id: string}>('myPrinters').insertOne(newPrinter);
         }
         catch(error) {
             console.error(error);
