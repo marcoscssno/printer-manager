@@ -39,15 +39,13 @@ const fuserData = {
 const fuser = new PrinterSupply(fuserData);
 const supply = [toner, drum, fuser]
 
-const fakePrinter = () => {
-    return {
-        ipAddress: fakeIpAddress,
-        manufacturer: fakeManufacturer,
-        model: fakeModel,
-        serialNumber: fakeSerialNumber,
-        propertyNumber: fakePropertyNumber,
-        supply
-    }
+const fakePrinter = {
+    ipAddress: fakeIpAddress,
+    manufacturer: fakeManufacturer,
+    model: fakeModel,
+    serialNumber: fakeSerialNumber,
+    propertyNumber: fakePropertyNumber,
+    supply
 }
 
 export {
