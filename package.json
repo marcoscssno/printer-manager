@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsnd --ignore-watch node_modules --respawn --transpile-only index.ts",
-    "start": "ts-node-transpile-only index.ts"
+    "start": "ts-node-transpile-only index.ts",
+    "test": "jest"
   },
   "author": "Marcos Cassiano (marcoscssno@gmail.com)",
   "license": "MIT",
