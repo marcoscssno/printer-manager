@@ -13,12 +13,24 @@ describe('It should create a printer', () => {
     it('should create a printer', async () => {
         // Arrange
         const sut = makeSut();
-        const data = fakePrinter;
+        const data = fakePrinter();
         const allPrinters = await inMemoryPrinterRepository.findAll();
         // Act
         await sut.execute(data);
         const printerFromRepository = allPrinters[0];
         // Assert
         expect(printerFromRepository).toMatchObject(fakePrinter);
+    });
+
+    it('should not create a printer when there is one with same serial number', async () => {
+        // Arrange
+        const sut = makeSut();
+        const firstPrinterData = fakePrinter();
+        const secondPrinterData = fakePrinter();
+        const allPrinters = await inMemoryPrinterRepository.findAll();
+        // Act
+        await sut.execute(firstPrinterData);
+        // Assert
+        expect(async () => sut.execute(secondPrinterData)).rejects.toThrowError();
     });
 });
