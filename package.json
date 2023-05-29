@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --ignore-watch node_modules --respawn --transpile-only index.ts",
-    "start": "ts-node-transpile-only index.ts",
+    "dev": "tsnd --ignore-watch node_modules --respawn --transpile-only src/index.ts",
+    "start": "ts-node-transpile-only src/index.ts",
     "test": "jest"
   },
   "author": "Marcos Cassiano (marcoscssno@gmail.com)",
