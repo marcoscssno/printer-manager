@@ -10,6 +10,7 @@
   "author": "Marcos Cassiano (marcoscssno@gmail.com)",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^29.5.1",
     "jest": "^29.5.0",
     "ts-jest": "^29.1.0",
     "ts-node-dev": "^2.0.0",
