@@ -1,17 +1,12 @@
 import { PrinterSupply } from '@entity/printerSupply/PrinterSupply';
-import { faker } from '@faker-js/faker';
+import { fakeIpAddress, fakeManufacturer, fakeModel, fakeSerialNumber, fakePropertyNumber, fakeId, fakeLevel, fakeRecentDate, fakeUserName } from './fakeProp';
 
-const ipAddress = faker.internet.ipv4();
-const manufacturer = faker.company.name();
-const model = faker.string.alpha({ casing: 'upper', length: 3 }) + faker.string.numeric(3);
-const serialNumber = faker.string.alphanumeric({ casing: 'upper', length: 10 });
-const propertyNumber = faker.string.numeric(6)
 const tonerData = {
-    id: faker.string.uuid,
+    id: fakeId,
     name: 'Toner',
-    level: faker.string.numeric(2),
-    createdAt: faker.date.recent(),
-    createdBy: faker.internet.userName(),
+    level: fakeLevel,
+    createdAt: fakeRecentDate,
+    createdBy: fakeUserName,
     lastUpdatedAt: null,
     lastUpdatedBy: null,
     isDeleted: null,
@@ -19,11 +14,11 @@ const tonerData = {
 };
 const toner = new PrinterSupply(tonerData);
 const drumData = {
-    id: faker.string.uuid,
+    id: fakeId,
     name: 'Drum',
-    level: faker.string.numeric(2),
-    createdAt: faker.date.recent(),
-    createdBy: faker.internet.userName(),
+    level: fakeLevel,
+    createdAt: fakeRecentDate,
+    createdBy: fakeUserName,
     lastUpdatedAt: null,
     lastUpdatedBy: null,
     isDeleted: null,
@@ -31,11 +26,11 @@ const drumData = {
 };
 const drum = new PrinterSupply(drumData);
 const fuserData = {
-    id: faker.string.uuid,
+    id: fakeId,
     name: 'Fuser',
-    level: faker.string.numeric(2),
-    createdAt: faker.date.recent(),
-    createdBy: faker.internet.userName(),
+    level: fakeLevel,
+    createdAt: fakeRecentDate,
+    createdBy: fakeUserName,
     lastUpdatedAt: null,
     lastUpdatedBy: null,
     isDeleted: null,
@@ -45,11 +40,11 @@ const fuser = new PrinterSupply(fuserData);
 const supply = [toner, drum, fuser]
 
 const fakePrinter = {
-    ipAddress,
-    manufacturer,
-    model,
-    serialNumber,
-    propertyNumber,
+    ipAddress: fakeIpAddress,
+    manufacturer: fakeManufacturer,
+    model: fakeModel,
+    serialNumber: fakeSerialNumber,
+    propertyNumber: fakePropertyNumber,
     supply
 }
 
