@@ -8,5 +8,6 @@ module.exports = {
     '^@repository/(.*)$': '<rootDir>/src/core/repository/$1',
     '^@service/(.*)$': '<rootDir>/src/core/service/$1',
     '^@useCase/(.*)$': '<rootDir>/src/core/useCase/$1',
+    '^@shared/(.*)$': '<rootDir>/src/core/shared/$1',
   },
 };

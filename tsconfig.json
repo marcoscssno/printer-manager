@@ -7,6 +7,7 @@
             "@repository/*": ["core/repository/*"],
             "@service/*": ["core/service/*"],
             "@useCase/*": ["core/useCase/*"],
+            "@shared/*": ["core/shared/*"],
         },
         "esModuleInterop": true,
         "moduleResolution": "Node"
