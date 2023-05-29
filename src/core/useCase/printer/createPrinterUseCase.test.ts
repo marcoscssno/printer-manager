@@ -13,7 +13,7 @@ describe('It should create a printer', () => {
     it('should create a printer', async () => {
         // Arrange
         const sut = makeSut();
-        const data = fakePrinter();
+        const data = fakePrinter;
         const allPrinters = await inMemoryPrinterRepository.findAll();
         // Act
         await sut.execute(data);
