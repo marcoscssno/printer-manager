@@ -19,7 +19,7 @@ describe('It should create a printer', () => {
         await sut.execute(data);
         const printerFromRepository = allPrinters[0];
         // Assert
-        expect(printerFromRepository).toMatchObject(fakePrinter);
+        expect(printerFromRepository).toMatchObject(data);
     });
 
     it('should not create a printer when there is one with same serial number', async () => {
