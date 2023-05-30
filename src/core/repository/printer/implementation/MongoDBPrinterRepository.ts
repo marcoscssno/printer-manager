@@ -7,6 +7,9 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     constructor(client: MongoClient) {
         this.client = client;
     }
+    findBySerialNumber(serialNumber: string): Promise<Printer> {
+        throw new Error("Method not implemented.");
+    }
     async save(printer: Printer): Promise<void> {
         try {
             const newPrinter = {
