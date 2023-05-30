@@ -26,7 +26,9 @@ describe('It should create a printer', () => {
         // Arrange
         const sut = makeSut();
         const firstPrinterData = fakePrinter();
+        firstPrinterData.serialNumber = 'ABC123DEF4';
         const secondPrinterData = fakePrinter();
+        secondPrinterData.serialNumber = 'ABC123DEF4';
         const allPrinters = await inMemoryPrinterRepository.findAll();
         // Act
         await sut.execute(firstPrinterData);
