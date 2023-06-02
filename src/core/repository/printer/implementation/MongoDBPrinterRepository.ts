@@ -19,7 +19,6 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
                 model: printer.getModel(),
                 serialNumber: printer.getSerialNumber(),
                 propertyNumber: printer.getPropertyNumber(),
-                supply: printer.getSupply(),
                 createdAt: printer.getCreatedAt(),
                 createdBy: printer.getCreatedBy(),
                 lastUpdatedAt: printer.getLastUpdatedAt(),
