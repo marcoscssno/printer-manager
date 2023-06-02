@@ -2,7 +2,7 @@ import { Printer } from "../../entity/printer/Printer";
 
 interface PrinterRepositoryInterface {
     save(printer: Printer): Promise<void>;
-    findById(id: string): Promise<Printer>;
+    findById(id: string): Promise<Printer | null>;
     findBySerialNumber(serialNumber: string): Promise<Printer | null>
     findAll(): Promise<Printer[] | []>;
     update(id: string, printer: Printer): Promise<void>;
