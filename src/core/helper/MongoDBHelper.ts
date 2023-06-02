@@ -5,7 +5,7 @@ class MongoDBHelper {
     private client: MongoClient;
 
     async connect(): Promise<void> {
-        const uri = "mongodb+srv://marcoscssno:7slgsXMroSCdl0q5@cluster0.xvy4wor.mongodb.net/?retryWrites=true&w=majority";
+        const uri = "MONGODB_URI";
         const client = new MongoClient(uri);
         this.client = client;
         try {
