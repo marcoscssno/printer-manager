@@ -17,13 +17,13 @@ class Printer {
             throw new Error(error);
         }
     }
-    getId() {
+    getId(): string {
         return this.props.id;
     }
-    getIpAddress() {
-        return this.props.ipAddress;
+    getIpAddress(): string | null {
+        return this.props.ipAddress || null;
     }
-    setIpAddress(ipAddress: string): void {
+    setIpAddress(ipAddress: string | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('ipAddress', ipAddress, { strict: true });
             this.props.ipAddress = validatedProp;
@@ -45,10 +45,9 @@ class Printer {
         }
     }
     getModel(): string | null {
-        if(!this.props.model) return null;
-        return this.props.model;
+        return this.props.model || null;
     }
-    setModel(model: string): void {
+    setModel(model: string | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('model', model, { strict: true });
             this.props.model = validatedProp;
@@ -57,10 +56,10 @@ class Printer {
             throw new Error(error);
         }
     }
-    getSerialNumber() {
-        return this.props.serialNumber;
+    getSerialNumber(): string | null {
+        return this.props.serialNumber || null;
     }
-    setSerialNumber(serialNumber: string): void {
+    setSerialNumber(serialNumber: string | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('serialNumber', serialNumber, { strict: true });
             this.props.serialNumber = validatedProp;
@@ -105,10 +104,10 @@ class Printer {
             throw new Error(error);
         }
     }
-    getLastUpdatedAt() {
-        return this.props.lastUpdatedAt;
+    getLastUpdatedAt(): Date | null {
+        return this.props.lastUpdatedAt || null;
     }
-    setLastUpdatedAt(lastUpdatedAt: Date): void {
+    setLastUpdatedAt(lastUpdatedAt: Date | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('lastUpdatedAt', lastUpdatedAt, { strict: true });
             this.props.lastUpdatedAt = validatedProp;
@@ -117,10 +116,10 @@ class Printer {
             throw new Error(error);
         }
     }
-    getLastUpdatedBy() {
-        return this.props.lastUpdatedBy;
+    getLastUpdatedBy(): string | null {
+        return this.props.lastUpdatedBy || null;
     }
-    setLastUpdatedBy(lastUpdatedBy: string): void {
+    setLastUpdatedBy(lastUpdatedBy: string | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('lastUpdatedBy', lastUpdatedBy, { strict: true });
             this.props.lastUpdatedBy = validatedProp;
@@ -141,10 +140,10 @@ class Printer {
             throw new Error(error);
         }
     }
-    getDeletedAt() {
-        return this.props.deletedAt;
+    getDeletedAt(): Date | null {
+        return this.props.deletedAt || null;
     }
-    setDeletedAt(deletedAt: Date): void {
+    setDeletedAt(deletedAt: Date | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('deletedAt', deletedAt, { strict: true });
             this.props.deletedAt = validatedProp;
