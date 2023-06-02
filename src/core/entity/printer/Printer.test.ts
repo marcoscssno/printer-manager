@@ -2,7 +2,7 @@ import { Printer } from "./Printer";
 import { fakePrinter } from "@shared/fake/fakePrinter";
 
 describe('Printer Entity', () => {
-    it('should instantiate a printer entity', async () => {
+    it('should instantiate a printer entity', () => {
         // Arrange
         const metaData = {
             createdAt: new Date(),
