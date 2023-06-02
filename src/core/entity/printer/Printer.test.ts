@@ -1,5 +1,6 @@
 import { Printer } from "./Printer";
 import { fakePrinter } from "@shared/fake/fakePrinter";
+import { PrinterProps } from "./PrinterProps";
 
 describe('Printer Entity', () => {
     it('should instantiate a printer entity', () => {
@@ -21,5 +22,24 @@ describe('Printer Entity', () => {
         const newPrinter = new Printer(data, customId);
         // Assert
         expect(newPrinter.getId()).toBe(customId);
+    });
+    it('should validate props on constructor', () => {
+        const metaData = {
+            createdAt: new Date(),
+            createdBy: 'user',
+            lastUpdatedAt: null,
+            lastUpdatedBy: null,
+            isDeleted: false,
+            deletedAt: null
+        }
+        const data: Omit<PrinterProps, 'id'> = {
+            ...metaData,
+            // @ts-expect-error
+            manufacturer: undefined
+        }
+        // Act
+        
+        // Assert
+        expect(() => new Printer(data)).toThrow();
     });
 });
