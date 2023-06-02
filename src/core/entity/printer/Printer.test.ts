@@ -42,4 +42,26 @@ describe('Printer Entity', () => {
         // Assert
         expect(() => new Printer(data)).toThrow();
     });
+    it('should require a manufacturer', () => {
+        const metaData = {
+            createdAt: new Date(),
+            createdBy: 'user',
+            lastUpdatedAt: null,
+            lastUpdatedBy: null,
+            isDeleted: false,
+            deletedAt: null
+        }
+        // @ts-expect-error
+        const data: Omit<PrinterProps, 'id'> = {
+            ...metaData,
+            ipAddress: fakePrinter().ipAddress,
+            model: fakePrinter().model,
+            serialNumber: fakePrinter().serialNumber,
+            propertyNumber: fakePrinter().propertyNumber
+        }
+        // Act
+        
+        // Assert
+        expect(() => new Printer(data)).toThrow('manufacturer');
+    });
 });
