@@ -1,6 +1,7 @@
 import { Printer } from "./Printer";
 import { fakePrinter } from "@shared/fake/fakePrinter";
 import { PrinterProps } from "./PrinterProps";
+import { fakeIpAddress, fakeManufacturer, fakeModel, fakeSerialNumber, fakePropertyNumber, fakeRecentDate, fakeUserName } from '@shared/fake/fakeProp';
 
 describe('Printer Entity', () => {
     it('should instantiate a printer entity', () => {
@@ -100,5 +101,56 @@ describe('Printer Entity', () => {
         const newPrinter = new Printer(data, customId);
         // Assert
         expect(newPrinter.getId()).toBe(customId);
+    });
+    it('should validate on setter methods', () => {
+        // Arrange
+        const metaData = {
+            createdAt: new Date(),
+            createdBy: 'user',
+            lastUpdatedAt: null,
+            lastUpdatedBy: null,
+            isDeleted: false,
+            deletedAt: null
+        }
+        const data = {
+            ...metaData,
+            ...fakePrinter()
+        }
+        // Act
+        const newPrinter = new Printer(data);
+        // @ts-expect-error
+        const setIpAddress = () => newPrinter.setIpAddress(false);
+        // @ts-expect-error
+        const setManufacturer = () => newPrinter.setManufacturer(false);
+        // @ts-expect-error
+        const setModel = () => newPrinter.setModel(false);
+        // @ts-expect-error
+        const setSerialNumber = () => newPrinter.setSerialNumber(false);
+        // @ts-expect-error
+        const setPropertyNumber = () => newPrinter.setPropertyNumber(false);
+        // @ts-expect-error
+        const setCreatedAt = () => newPrinter.setCreatedAt('someString');
+        // @ts-expect-error
+        const setCreatedBy = () => newPrinter.setCreatedBy(false);
+        // @ts-expect-error
+        const setLastUpdatedAt = () => newPrinter.setLastUpdatedAt('someString');
+        // @ts-expect-error
+        const setLastUpdatedBy = () => newPrinter.setLastUpdatedBy(false);
+        // @ts-expect-error
+        const setIsDeleted = () => newPrinter.setIsDeleted('someString');
+        // @ts-expect-error
+        const setDeletedAt = () => newPrinter.setDeletedAt(true);
+        // Assert
+        expect(setIpAddress).toThrow('ValidationError');
+        expect(setManufacturer).toThrow('ValidationError');
+        expect(setModel).toThrow('ValidationError');
+        expect(setSerialNumber).toThrow('ValidationError');
+        expect(setPropertyNumber).toThrow('ValidationError');
+        expect(setCreatedAt).toThrow('ValidationError');
+        expect(setCreatedBy).toThrow('ValidationError');
+        // expect(setLastUpdatedAt).toThrow('ValidationError');
+        expect(setLastUpdatedBy).toThrow('ValidationError');
+        expect(setIsDeleted).toThrow('ValidationError');
+        // expect(setDeletedAt).toThrow('ValidationError');
     });
 });
