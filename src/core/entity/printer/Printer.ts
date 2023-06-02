@@ -24,68 +24,134 @@ class Printer {
         return this.props.ipAddress;
     }
     setIpAddress(ipAddress: string): void {
-        this.props.ipAddress = ipAddress;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('ipAddress', ipAddress, { strict: true });
+            this.props.ipAddress = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getManufacturer(): string {
         return this.props.manufacturer;
     }
     setManufacturer(manufacturer: string): void {
-        this.props.manufacturer = manufacturer;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('manufacturer', manufacturer, { strict: true });
+            this.props.manufacturer = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getModel(): string | null {
         if(!this.props.model) return null;
         return this.props.model;
     }
     setModel(model: string): void {
-        this.props.model = model;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('model', model, { strict: true });
+            this.props.model = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getSerialNumber() {
         return this.props.serialNumber;
     }
     setSerialNumber(serialNumber: string): void {
-        this.props.serialNumber = serialNumber;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('serialNumber', serialNumber, { strict: true });
+            this.props.serialNumber = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getPropertyNumber() {
         return this.props.propertyNumber;
     }
     setPropertyNumber(propertyNumber: number): void {
-        this.props.propertyNumber = propertyNumber;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('propertyNumber', propertyNumber, { strict: true });
+            this.props.propertyNumber = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getCreatedAt(): Date {
         return this.props.createdAt;
     }
     setCreatedAt(createdAt: Date): void {
-        this.props.createdAt = createdAt;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('createdAt', createdAt, { strict: true });
+            this.props.createdAt = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getCreatedBy(): string {
         return this.props.createdBy;
     }
     setCreatedBy(createdBy: string): void {
-        this.props.createdBy = createdBy;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('createdBy', createdBy, { strict: true });
+            this.props.createdBy = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getLastUpdatedAt() {
         return this.props.lastUpdatedAt;
     }
     setLastUpdatedAt(lastUpdatedAt: Date): void {
-        this.props.lastUpdatedAt = lastUpdatedAt;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('lastUpdatedAt', lastUpdatedAt, { strict: true });
+            this.props.lastUpdatedAt = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getLastUpdatedBy() {
         return this.props.lastUpdatedBy;
     }
     setLastUpdatedBy(lastUpdatedBy: string): void {
-        this.props.lastUpdatedBy = lastUpdatedBy;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('lastUpdatedBy', lastUpdatedBy, { strict: true });
+            this.props.lastUpdatedBy = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getIsDeleted(): boolean {
         return this.props.isDeleted;
     }
     setIsDeleted(isDeleted: boolean): void {
-        this.props.isDeleted = isDeleted;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('isDeleted', isDeleted, { strict: true });
+            this.props.isDeleted = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
     getDeletedAt() {
         return this.props.deletedAt;
     }
     setDeletedAt(deletedAt: Date): void {
-        this.props.deletedAt = deletedAt;
+        try {
+            const validatedProp = printerSchema.validateSyncAt('deletedAt', deletedAt, { strict: true });
+            this.props.deletedAt = validatedProp;
+        }
+        catch (error) {
+            throw new Error(error);
+        }
     }
 }
 
