@@ -68,10 +68,10 @@ class Printer {
             throw new Error(error);
         }
     }
-    getPropertyNumber() {
-        return this.props.propertyNumber;
+    getPropertyNumber(): number | null {
+        return this.props.propertyNumber || null;
     }
-    setPropertyNumber(propertyNumber: number): void {
+    setPropertyNumber(propertyNumber: number | null): void {
         try {
             const validatedProp = printerSchema.validateSyncAt('propertyNumber', propertyNumber, { strict: true });
             this.props.propertyNumber = validatedProp;
