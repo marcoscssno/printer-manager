@@ -1,101 +1,91 @@
-import { PrinterSupply } from "../printerSupply/PrinterSupply";
-import { PrinterProperties } from './PrinterProperties';
+import { PrinterProps } from './PrinterProps';
 import { v4 as uuidv4 } from 'uuid';
+import { printerSchema } from "./printerSchema";
 
 class Printer {
-    private readonly id: string;
-    private ipAddress: string;
-    private manufacturer: string;
-    private model: string;
-    private serialNumber: string;
-    private propertyNumber: string;
-    private supply: PrinterSupply[];
-    private createdAt: Date;
-    private createdBy: string;
-    private lastUpdatedAt: Date;
-    private lastUpdatedBy: string;
-    private isDeleted: boolean;
-    private deletedAt: Date;
-    constructor(properties: PrinterProperties, id?: string) {
-        Object.assign(this, properties);
-        if(!id) {
-            this.id = uuidv4();
+    private props: PrinterProps;
+    constructor(props: Omit<PrinterProps, 'id'>, id?: string) {
+        try {
+            if(!id) {
+                id = uuidv4();
+            }
+            const data = { id, ...props };
+            const validatedProps = printerSchema.validateSync(data);
+            this.props = validatedProps;
+        }
+        catch (error) {
+            throw new Error(error);
         }
     }
-    getId(): string {
-        return this.id;
+    getId() {
+        return this.props.id;
     }
-    getIpAddress(): string {
-        return this.ipAddress;
+    getIpAddress() {
+        return this.props.ipAddress;
     }
     setIpAddress(ipAddress: string): void {
-        this.ipAddress = ipAddress;
+        this.props.ipAddress = ipAddress;
     }
     getManufacturer(): string {
-        return this.manufacturer;
+        return this.props.manufacturer;
     }
     setManufacturer(manufacturer: string): void {
-        this.manufacturer = manufacturer;
+        this.props.manufacturer = manufacturer;
     }
-    getModel(): string {
-        return this.model;
+    getModel(): string | null {
+        if(!this.props.model) return null;
+        return this.props.model;
     }
     setModel(model: string): void {
-        this.model = model;
+        this.props.model = model;
     }
-    getSerialNumber(): string {
-        return this.serialNumber;
+    getSerialNumber() {
+        return this.props.serialNumber;
     }
     setSerialNumber(serialNumber: string): void {
-        this.serialNumber = serialNumber;
+        this.props.serialNumber = serialNumber;
     }
-    getPropertyNumber(): string {
-        return this.propertyNumber;
+    getPropertyNumber() {
+        return this.props.propertyNumber;
     }
-    setPropertyNumber(propertyNumber: string): void {
-        this.propertyNumber = propertyNumber;
-    }
-    getSupply(): PrinterSupply[] {
-        return this.supply;
-    }
-    setSupply(supply: PrinterSupply[]): void {
-        this.supply = supply;
+    setPropertyNumber(propertyNumber: number): void {
+        this.props.propertyNumber = propertyNumber;
     }
     getCreatedAt(): Date {
-        return this.createdAt;
+        return this.props.createdAt;
     }
     setCreatedAt(createdAt: Date): void {
-        this.createdAt = createdAt;
+        this.props.createdAt = createdAt;
     }
     getCreatedBy(): string {
-        return this.createdBy;
+        return this.props.createdBy;
     }
     setCreatedBy(createdBy: string): void {
-        this.createdBy = createdBy;
+        this.props.createdBy = createdBy;
     }
-    getLastUpdatedAt(): Date {
-        return this.lastUpdatedAt;
+    getLastUpdatedAt() {
+        return this.props.lastUpdatedAt;
     }
     setLastUpdatedAt(lastUpdatedAt: Date): void {
-        this.lastUpdatedAt = lastUpdatedAt;
+        this.props.lastUpdatedAt = lastUpdatedAt;
     }
-    getLastUpdatedBy(): string {
-        return this.lastUpdatedBy;
+    getLastUpdatedBy() {
+        return this.props.lastUpdatedBy;
     }
     setLastUpdatedBy(lastUpdatedBy: string): void {
-        this.lastUpdatedBy = lastUpdatedBy;
+        this.props.lastUpdatedBy = lastUpdatedBy;
     }
     getIsDeleted(): boolean {
-        return this.isDeleted;
+        return this.props.isDeleted;
     }
     setIsDeleted(isDeleted: boolean): void {
-        this.isDeleted = isDeleted;
+        this.props.isDeleted = isDeleted;
     }
-    getDeletedAt(): Date {
-        return this.deletedAt;
+    getDeletedAt() {
+        return this.props.deletedAt;
     }
     setDeletedAt(deletedAt: Date): void {
-        this.deletedAt = deletedAt;
+        this.props.deletedAt = deletedAt;
     }
 }
 
