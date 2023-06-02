@@ -26,8 +26,6 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
             targetPrinter.setModel(printer.getModel());
             targetPrinter.setSerialNumber(printer.getSerialNumber());
             targetPrinter.setPropertyNumber(printer.getPropertyNumber());
-            targetPrinter.setCreatedAt(printer.getCreatedAt());
-            targetPrinter.setCreatedBy(printer.getCreatedBy());
             targetPrinter.setLastUpdatedAt(printer.getLastUpdatedAt());
             targetPrinter.setLastUpdatedBy(printer.getLastUpdatedBy());
             targetPrinter.setIsDeleted(printer.getIsDeleted());

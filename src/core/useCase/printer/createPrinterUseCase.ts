@@ -7,7 +7,7 @@ class CreatePrinterUseCase {
         private printerRepository: PrinterRepositoryInterface
     ) { }
     async execute(data: CreatePrinterRequestDTO): Promise<void> {
-        const { ipAddress, manufacturer, model, serialNumber, propertyNumber, supply } = data;
+        const { ipAddress, manufacturer, model, serialNumber, propertyNumber } = data;
         const printerWithSameSerialNumberExists = await this.printerRepository.findBySerialNumber(serialNumber);
         if(printerWithSameSerialNumberExists) {
             throw new Error(`Printer with serial number ${serialNumber} already exists.`);
@@ -24,7 +24,6 @@ class CreatePrinterUseCase {
             model,
             serialNumber,
             propertyNumber,
-            supply,
             createdAt,
             createdBy,
             lastUpdatedAt,

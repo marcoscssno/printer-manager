@@ -83,26 +83,8 @@ class Printer {
     getCreatedAt(): Date {
         return this.props.createdAt;
     }
-    setCreatedAt(createdAt: Date): void {
-        try {
-            const validatedProp = printerSchema.validateSyncAt('createdAt', createdAt, { strict: true });
-            this.props.createdAt = validatedProp;
-        }
-        catch (error) {
-            throw new Error(error);
-        }
-    }
     getCreatedBy(): string {
         return this.props.createdBy;
-    }
-    setCreatedBy(createdBy: string): void {
-        try {
-            const validatedProp = printerSchema.validateSyncAt('createdBy', createdBy, { strict: true });
-            this.props.createdBy = validatedProp;
-        }
-        catch (error) {
-            throw new Error(error);
-        }
     }
     getLastUpdatedAt(): Date | null {
         return this.props.lastUpdatedAt || null;

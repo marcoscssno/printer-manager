@@ -129,10 +129,6 @@ describe('Printer Entity', () => {
         // @ts-expect-error
         const setPropertyNumber = () => newPrinter.setPropertyNumber(false);
         // @ts-expect-error
-        const setCreatedAt = () => newPrinter.setCreatedAt('someString');
-        // @ts-expect-error
-        const setCreatedBy = () => newPrinter.setCreatedBy(false);
-        // @ts-expect-error
         const setLastUpdatedAt = () => newPrinter.setLastUpdatedAt('someString');
         // @ts-expect-error
         const setLastUpdatedBy = () => newPrinter.setLastUpdatedBy(false);
@@ -146,8 +142,6 @@ describe('Printer Entity', () => {
         expect(setModel).toThrow('ValidationError');
         expect(setSerialNumber).toThrow('ValidationError');
         expect(setPropertyNumber).toThrow('ValidationError');
-        expect(setCreatedAt).toThrow('ValidationError');
-        expect(setCreatedBy).toThrow('ValidationError');
         // expect(setLastUpdatedAt).toThrow('ValidationError');
         expect(setLastUpdatedBy).toThrow('ValidationError');
         expect(setIsDeleted).toThrow('ValidationError');
