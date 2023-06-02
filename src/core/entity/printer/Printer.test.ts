@@ -64,4 +64,22 @@ describe('Printer Entity', () => {
         // Assert
         expect(() => new Printer(data)).toThrow('manufacturer');
     });
+    it('should assign new id when no id is specified', () => {
+        const metaData = {
+            createdAt: new Date(),
+            createdBy: 'user',
+            lastUpdatedAt: null,
+            lastUpdatedBy: null,
+            isDeleted: false,
+            deletedAt: null
+        }
+        const data: Omit<PrinterProps, 'id'> = {
+            ...metaData,
+            ...fakePrinter()
+        }
+        // Act
+        const newPrinter = new Printer(data);
+        // Assert
+        expect(newPrinter.getId()).toBeDefined();
+    });
 });
