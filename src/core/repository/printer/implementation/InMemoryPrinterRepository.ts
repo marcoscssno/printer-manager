@@ -7,13 +7,13 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
     async save(printer: Printer): Promise<void> {
         this.printers.push(printer);
     }
-    async findById(id: string): Promise<Printer | undefined> {
+    async findById(id: string): Promise<Printer | null> {
         const printer = this.printers.find(printer => printer.getId() === id);
-        return printer;
+        return printer || null;
     }
     async findBySerialNumber(serialNumber: string): Promise<Printer | null> {
         const printer = this.printers.find(printer => printer.getSerialNumber() === serialNumber);
-        return printer;
+        return printer || null;
     }
     async findAll(): Promise<Printer[] | []> {
         return this.printers;
