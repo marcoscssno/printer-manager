@@ -7,7 +7,7 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     constructor(client: MongoClient) {
         this.client = client;
     }
-    findBySerialNumber(serialNumber: string): Promise<Printer> {
+    findBySerialNumber(serialNumber: string): Promise<Printer | null> {
         throw new Error("Method not implemented.");
     }
     async save(printer: Printer): Promise<void> {
@@ -33,7 +33,7 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
             console.error(error);
         }
     }
-    findById(id: string): Promise<Printer> {
+    findById(id: string): Promise<Printer | null> {
         throw new Error("Method not implemented.");
     }
     findAll(): Promise<[] | Printer[]> {
