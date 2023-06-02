@@ -17,7 +17,14 @@ describe('It should create a printer', () => {
         const allPrinters = await inMemoryPrinterRepository.findAll();
         // Act
         await sut.execute(data);
-        const printerFromRepository = allPrinters[0];
+        const printer = allPrinters[0];
+        const printerFromRepository = {
+            ipAddress: printer.getIpAddress(),
+            manufacturer: printer.getManufacturer(),
+            model: printer.getModel(),
+            propertyNumber: printer.getPropertyNumber(),
+            serialNumber: printer.getSerialNumber()
+        }
         // Assert
         expect(printerFromRepository).toMatchObject(data);
     });
