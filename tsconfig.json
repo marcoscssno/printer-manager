@@ -10,6 +10,8 @@
             "@shared/*": ["core/shared/*"],
         },
         "esModuleInterop": true,
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "strictNullChecks": true,
+        "strictFunctionTypes": false
     }
 }
