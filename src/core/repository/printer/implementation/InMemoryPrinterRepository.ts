@@ -21,18 +21,18 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
     async update(id: string, printer: Printer): Promise<void> {
         const targetPrinter = this.printers.find(printer => printer.getId() === id);
         if (targetPrinter) {
-            targetPrinter?.setIpAddress(printer.getIpAddress());
-            targetPrinter?.setManufacturer(printer.getManufacturer());
-            targetPrinter?.setModel(printer.getModel());
-            targetPrinter?.setSerialNumber(printer.getSerialNumber());
-            targetPrinter?.setPropertyNumber(printer.getPropertyNumber());
-            targetPrinter?.setSupply(printer.getSupply());
-            targetPrinter?.setCreatedAt(printer.getCreatedAt());
-            targetPrinter?.setCreatedBy(printer.getCreatedBy());
-            targetPrinter?.setLastUpdatedAt(printer.getLastUpdatedAt());
-            targetPrinter?.setLastUpdatedBy(printer.getLastUpdatedBy());
-            targetPrinter?.setIsDeleted(printer.getIsDeleted());
-            targetPrinter?.setDeletedAt(printer.getDeletedAt());
+            targetPrinter.setIpAddress(printer.getIpAddress());
+            targetPrinter.setManufacturer(printer.getManufacturer());
+            targetPrinter.setModel(printer.getModel());
+            targetPrinter.setSerialNumber(printer.getSerialNumber());
+            targetPrinter.setPropertyNumber(printer.getPropertyNumber());
+            targetPrinter.setSupply(printer.getSupply());
+            targetPrinter.setCreatedAt(printer.getCreatedAt());
+            targetPrinter.setCreatedBy(printer.getCreatedBy());
+            targetPrinter.setLastUpdatedAt(printer.getLastUpdatedAt());
+            targetPrinter.setLastUpdatedBy(printer.getLastUpdatedBy());
+            targetPrinter.setIsDeleted(printer.getIsDeleted());
+            targetPrinter.setDeletedAt(printer.getDeletedAt());
         }
     }
     async delete(id: string): Promise<void> {
