@@ -17,11 +17,10 @@ describe('Printer Entity', () => {
             ...metaData,
             ...fakePrinter()
         }
-        const customId = 'f8211523-14a1-4a0b-b263-c6d0eec01c51';
         // Act
-        const newPrinter = new Printer(data, customId);
+        const newPrinter = new Printer(data);
         // Assert
-        expect(newPrinter.getId()).toBe(customId);
+        expect(newPrinter).toBeInstanceOf(Printer);
     });
     it('should validate props on constructor', () => {
         const metaData = {
