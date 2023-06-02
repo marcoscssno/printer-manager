@@ -3,10 +3,9 @@ import { PrinterSupply } from "@entity/printerSupply/PrinterSupply";
 type CreatePrinterRequestDTO = {
     ipAddress?: string | null,
     manufacturer: string,
-    model: string,
+    model?: string | null,
     serialNumber?: string | null,
-    propertyNumber?: string | null,
-    supply?: PrinterSupply[] | null
+    propertyNumber?: number | null,
 }
 
 export {
