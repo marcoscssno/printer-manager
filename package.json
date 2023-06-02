@@ -6,8 +6,7 @@
     "dev": "tsnd --ignore-watch node_modules --transpile-only --respawn -r tsconfig-paths/register src/index.ts",
     "start": "ts-node-transpile-only -r tsconfig-paths/register src/index.ts",
     "test": "jest",
-    "test-watch": "jest --watch",
-    "test-printer": "jest --watch Printer.test.ts"
+    "test-watch": "jest --watch"
   },
   "author": "Marcos Cassiano (marcoscssno@gmail.com)",
   "license": "MIT",
