@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --ignore-watch node_modules --transpile-only --respawn -r tsconfig-paths/register src/index.ts",
-    "start": "ts-node-transpile-only -r tsconfig-paths/register src/index.ts",
+    "dev": "tsnd --ignore-watch node_modules --transpile-only --respawn -r tsconfig-paths/register src/core/server.ts",
+    "start": "ts-node-transpile-only -r tsconfig-paths/register src/core/server.ts",
     "test": "jest",
     "test-watch": "jest --watch"
   },
