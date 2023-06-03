@@ -1,9 +1,10 @@
 import { Router } from "express";
+import { createPrinterController } from "@useCase/printer/create";
 
 const router = Router()
 
-router.get('/printers', (request, response) => {
-    return response.send('Hello, World!');
+router.post('/printer', (request, response) => {
+    return createPrinterController.handle(request, response);
 });
 
 
