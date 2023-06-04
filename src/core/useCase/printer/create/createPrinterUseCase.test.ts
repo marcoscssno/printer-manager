@@ -19,11 +19,11 @@ describe('It should create a printer', () => {
         await sut.execute(data);
         const printer = allPrinters[0];
         const printerFromRepository = {
-            ipAddress: printer.getIpAddress(),
-            manufacturer: printer.getManufacturer(),
-            model: printer.getModel(),
-            propertyNumber: printer.getPropertyNumber(),
-            serialNumber: printer.getSerialNumber()
+            ipAddress: printer.ipAddress,
+            manufacturer: printer.manufacturer,
+            model: printer.model,
+            propertyNumber: printer.propertyNumber,
+            serialNumber: printer.serialNumber
         }
         // Assert
         expect(printerFromRepository).toMatchObject(data);

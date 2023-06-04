@@ -17,6 +17,9 @@ class Printer {
             throw new Error(error);
         }
     }
+    getProps(): PrinterProps {
+        return this.props;
+    }
     getId(): string {
         return this.props.id;
     }

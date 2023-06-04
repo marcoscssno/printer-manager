@@ -23,8 +23,8 @@ describe('Find All Printers Use Case', () => {
         const secondPrinterData = { ...fakePrinter(), ...metaData };
         const secondPrinter = new Printer(secondPrinterData);
         
-        await inMemoryPrinterRepository.save(firstPrinter);
-        await inMemoryPrinterRepository.save(secondPrinter);
+        await inMemoryPrinterRepository.save(firstPrinter.getProps());
+        await inMemoryPrinterRepository.save(secondPrinter.getProps());
         const allPrinters = await sut.execute();
         
         expect(allPrinters[0]).toBe(firstPrinter);
