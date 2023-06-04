@@ -1,11 +1,11 @@
-import { Printer } from "../../entity/printer/Printer";
+import { PrinterProps } from "@entity/printer/PrinterProps";
 
 interface PrinterRepositoryInterface {
-    save(printer: Printer): Promise<void>;
-    findById(id: string): Promise<Printer | null>;
-    findBySerialNumber(serialNumber: string): Promise<Printer | null>
-    findAll(): Promise<Printer[] | []>;
-    update(id: string, printer: Printer): Promise<void>;
+    save(printer: PrinterProps): Promise<void>;
+    findById(id: string): Promise<PrinterProps | null>;
+    findBySerialNumber(serialNumber: string): Promise<PrinterProps | null>
+    findAll(): Promise<PrinterProps[] | []>;
+    update(id: string, printer: PrinterProps): Promise<void>;
     delete(id: string): Promise<void>;
 }
 

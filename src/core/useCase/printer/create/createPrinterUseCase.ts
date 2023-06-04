@@ -34,7 +34,7 @@ class CreatePrinterUseCase {
             deletedAt,
         }
         const printer: Printer = new Printer(printerProps);
-        await this.printerRepository.save(printer);
+        await this.printerRepository.save(printer.getProps());
     }
 }
 
