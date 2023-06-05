@@ -21,15 +21,33 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
     async update(id: string, printer: PrinterProps): Promise<void> {
         const targetPrinter = this.printers.find(printer => printer.id === id);
         if (targetPrinter) {
-            targetPrinter.ipAddress = printer.ipAddress;
-            targetPrinter.manufacturer = printer.manufacturer;
-            targetPrinter.model = printer.model;
-            targetPrinter.serialNumber = printer.serialNumber;
-            targetPrinter.propertyNumber = printer.propertyNumber;
-            targetPrinter.lastUpdatedAt = printer.lastUpdatedAt;
-            targetPrinter.lastUpdatedBy = printer.lastUpdatedBy;
-            targetPrinter.isDeleted = printer.isDeleted;
-            targetPrinter.deletedAt = printer.deletedAt;
+            if(printer.ipAddress !== undefined) {
+                targetPrinter.ipAddress = printer.ipAddress;
+            }
+            if(printer.manufacturer !== undefined) {
+                targetPrinter.manufacturer = printer.manufacturer;
+            }
+            if(printer.model !== undefined) {
+                targetPrinter.model = printer.model;
+            }
+            if(printer.serialNumber !== undefined) {
+                targetPrinter.serialNumber = printer.serialNumber;
+            }
+            if(printer.propertyNumber !== undefined) {
+                targetPrinter.propertyNumber = printer.propertyNumber;
+            }
+            if(printer.lastUpdatedAt !== undefined) {
+                targetPrinter.lastUpdatedAt = printer.lastUpdatedAt;
+            }
+            if(printer.lastUpdatedBy !== undefined) {
+                targetPrinter.lastUpdatedBy = printer.lastUpdatedBy;
+            }
+            if(printer.isDeleted !== undefined) {
+                targetPrinter.isDeleted = printer.isDeleted;
+            }
+            if(printer.deletedAt !== undefined) {
+                targetPrinter.deletedAt = printer.deletedAt;
+            }
         }
     }
     async delete(id: string): Promise<void> {
