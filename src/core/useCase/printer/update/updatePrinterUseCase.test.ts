@@ -26,4 +26,22 @@ describe('It should update a printer', () => {
 
         expect(updatePrinter).rejects.toThrow();
     });
+    it('should update a printer', async () => {
+        const sut = makeSut();
+        const metaData = {
+            createdAt: new Date(),
+            createdBy: 'user',
+            isDeleted: false
+        }
+        const printerData = { ...fakePrinter(), ...metaData };
+        const printer = new Printer(printerData);
+        const id = printer.getId();
+        await inMemoryPrinterRepository.save(printer.getProps());
+        const newIpAddress = '192.168.14.20';
+        const printerFromRepository = await inMemoryPrinterRepository.findById(id);
+
+        await sut.execute(id, { ipAddress: newIpAddress, manufacturer: printer.getManufacturer() });
+        
+        expect(printerFromRepository?.ipAddress).toBe(newIpAddress);
+    });
 });
