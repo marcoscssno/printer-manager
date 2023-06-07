@@ -50,12 +50,11 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
             }
         }
     }
-    async delete(id: string): Promise<void> {
-        const targetPrinter = printer => printer.id === id;
-        const targetPrinterIndex = this.printers.findIndex(targetPrinter);
-        const targetPrinterExists = targetPrinterIndex >= 0;
-        if (targetPrinterExists) {
-            this.printers.splice(targetPrinterIndex, 1);
+    async delete(id: string, date: Date): Promise<void> {
+        const targetPrinter = this.printers.find(printer => printer.id === id);
+        if (targetPrinter) {
+            targetPrinter.isDeleted = true;
+            targetPrinter.deletedAt = date;
         }
     }
 }
