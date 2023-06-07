@@ -16,4 +16,23 @@ describe('Delete Printer Use Case', () => {
         
         expect(async () => await sut.execute(id)).rejects.toThrow();
     });
+    it('should delete a printer', async () => {
+        const sut = makeSut();
+
+        const metaData = {
+            createdAt: new Date(),
+            createdBy: 'user',
+            isDeleted: false
+        }
+        const printerData = { ...fakePrinter(), ...metaData };
+        const printer = new Printer(printerData);
+        const id = printer.getId();
+        await inMemoryPrinterRepository.save(printer.getProps());
+        const allPrinters = await inMemoryPrinterRepository.findAll();
+
+        await sut.execute(id);
+
+        expect(allPrinters[0].isDeleted).toBeTruthy();
+        console.log(allPrinters[0]);
+    });
 });
