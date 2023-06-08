@@ -14,9 +14,9 @@ describe('It should create a printer', () => {
         // Arrange
         const sut = makeSut();
         const data = fakePrinter();
-        const allPrinters = await inMemoryPrinterRepository.findAll();
         // Act
         await sut.execute(data);
+        const allPrinters = await inMemoryPrinterRepository.findAll();
         const printer = allPrinters[0];
         const printerFromRepository = {
             ipAddress: printer.ipAddress,

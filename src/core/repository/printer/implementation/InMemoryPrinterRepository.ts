@@ -8,18 +8,19 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
         this.printers.push(printer);
     }
     async findById(id: string): Promise<PrinterProps | null> {
-        const printer = this.printers.find(printer => printer.id === id);
+        const printer = this.printers.find(printer => printer.id === id && printer.isDeleted === false);
         return printer || null;
     }
     async findBySerialNumber(serialNumber: string): Promise<PrinterProps | null> {
-        const printer = this.printers.find(printer => printer.serialNumber === serialNumber);
+        const printer = this.printers.find(printer => printer.serialNumber === serialNumber && printer.isDeleted === false);
         return printer || null;
     }
     async findAll(): Promise<PrinterProps[] | []> {
-        return this.printers;
+        const printers = this.printers.filter(printer => printer.isDeleted == false);
+        return printers;
     }
     async update(id: string, printer: PrinterProps): Promise<void> {
-        const targetPrinter = this.printers.find(printer => printer.id === id);
+        const targetPrinter = this.printers.find(printer => printer.id === id && printer.isDeleted === false);
         if (targetPrinter) {
             if(printer.ipAddress !== undefined) {
                 targetPrinter.ipAddress = printer.ipAddress;
