@@ -1,3 +1,4 @@
 import { app } from "./app";
+import { PORT } from "@shared/environment";
 
-app.listen(3333);
+app.listen(PORT || 3000);
