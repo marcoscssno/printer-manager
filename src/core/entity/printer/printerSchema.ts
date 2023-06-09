@@ -9,6 +9,7 @@ const printerSchema: ObjectSchema<PrinterProps> = object({
     model: string().nullable().optional(),
     serialNumber: string().nullable().optional(),
     propertyNumber: number().nullable().optional(),
+    supply: array().of(printerSupplySchema).optional(),
     createdAt: date().required(),
     createdBy: string().required(),
     lastUpdatedAt: date().nullable().optional(),
