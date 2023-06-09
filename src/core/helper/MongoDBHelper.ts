@@ -26,4 +26,4 @@ const mongoDBHelper = new MongoDBHelper();
 export {
     MongoDBHelper,
     mongoDBHelper
-}
+};

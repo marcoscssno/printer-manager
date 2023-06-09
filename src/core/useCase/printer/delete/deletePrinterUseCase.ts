@@ -3,10 +3,10 @@ import { PrinterRepositoryInterface } from "@repository/printer/PrinterRepositor
 class DeletePrinterUseCase {
     constructor(
         private printerRepository: PrinterRepositoryInterface
-    ) {}
+    ) { }
     async execute(id: string): Promise<void> {
         const printerExists = await this.printerRepository.findById(id);
-        if(!printerExists) {
+        if (!printerExists) {
             throw new Error(`Printer with id ${id} was not found`);
         }
         const date = new Date();
@@ -16,4 +16,4 @@ class DeletePrinterUseCase {
 
 export {
     DeletePrinterUseCase
-}
+};

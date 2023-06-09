@@ -10,4 +10,4 @@ type PrinterSuppliesDTO = {
 
 export {
     PrinterSuppliesDTO
-}
+};

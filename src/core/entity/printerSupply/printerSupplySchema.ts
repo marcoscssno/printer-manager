@@ -1,5 +1,5 @@
-import { object, string, number, boolean, date, ObjectSchema } from 'yup';
-import { PrinterSupply } from './PrinterSupply';
+import { ObjectSchema, boolean, date, number, object, string } from 'yup';
+import { PrinterSupply } from '@entity/printerSupply/PrinterSupply';
 
 const printerSupplySchema: ObjectSchema<PrinterSupply> = object({
     name: string(),
@@ -14,4 +14,4 @@ const printerSupplySchema: ObjectSchema<PrinterSupply> = object({
 
 export {
     printerSupplySchema
-}
+};

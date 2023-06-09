@@ -1,14 +1,14 @@
+import { Printer } from "@entity/printer/Printer";
 import { PrinterRepositoryInterface } from "@repository/printer/PrinterRepositoryInterface";
 import { CreatePrinterRequestDTO } from "@useCase/printer/create/createPrinterRequestDTO";
-import { Printer } from "@entity/printer/Printer";
 
 class UpdatePrinterUseCase {
     constructor(
         private printerRepository: PrinterRepositoryInterface
-    ) {}
+    ) { }
     async execute(id, data: CreatePrinterRequestDTO): Promise<void> {
         const printerExists = await this.printerRepository.findById(id);
-        if(!printerExists) {
+        if (!printerExists) {
             throw new Error(`Printer with id ${id} was not found`);
         }
         const { ipAddress, manufacturer, model, serialNumber, propertyNumber } = data;
@@ -38,4 +38,4 @@ class UpdatePrinterUseCase {
 
 export {
     UpdatePrinterUseCase
-}
+};

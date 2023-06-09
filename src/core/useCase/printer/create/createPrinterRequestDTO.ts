@@ -1,5 +1,3 @@
-import { PrinterSupply } from "@entity/printerSupply/PrinterSupply";
-
 type CreatePrinterRequestDTO = {
     ipAddress?: string | null,
     manufacturer: string,
@@ -10,4 +8,4 @@ type CreatePrinterRequestDTO = {
 
 export {
     CreatePrinterRequestDTO
-}
+};

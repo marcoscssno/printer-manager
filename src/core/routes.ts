@@ -1,9 +1,9 @@
-import { Router } from "express";
 import { createPrinterController } from "@useCase/printer/create";
+import { deletePrinterController } from "@useCase/printer/delete";
 import { findAllPrintersController } from "@useCase/printer/findAll";
 import { findPrinterByIdController } from "@useCase/printer/findById";
 import { updatePrinterController } from "@useCase/printer/update";
-import { deletePrinterController } from "@useCase/printer/delete";
+import { Router } from "express";
 
 const router = Router()
 
@@ -29,4 +29,4 @@ router.delete('/printer/:id', (request, response) => {
 
 export {
     router
-}
+};

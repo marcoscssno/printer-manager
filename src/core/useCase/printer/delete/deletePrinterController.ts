@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
 import { DeletePrinterUseCase } from "@useCase/printer/delete/deletePrinterUseCase";
+import { Request, Response } from 'express';
 
-export class DeletePrinterController {
+class DeletePrinterController {
     constructor(
         private deletePrinterUseCase: DeletePrinterUseCase
     ) { }
@@ -20,3 +20,7 @@ export class DeletePrinterController {
         }
     }
 }
+
+export {
+    DeletePrinterController
+};
