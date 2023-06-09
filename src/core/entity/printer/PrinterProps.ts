@@ -1,6 +1,4 @@
-import { InferType } from "yup"
-import { PrinterSupply } from "../printerSupply/PrinterSupply"
-import { printerSchema } from "./printerSchema"
+import { PrinterSupplyProps } from "@entity/printerSupply/PrinterSupplyProps"
 
 interface PrinterProps {
     readonly id: string,
@@ -9,6 +7,7 @@ interface PrinterProps {
     model?: string | null,
     serialNumber?: string | null,
     propertyNumber?: number | null,
+    supply?: PrinterSupplyProps[],
     readonly createdAt: Date,
     readonly createdBy: string,
     lastUpdatedAt?: Date | null,
