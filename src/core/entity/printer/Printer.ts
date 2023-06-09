@@ -1,12 +1,12 @@
-import { PrinterProps } from './PrinterProps';
 import { v4 as uuidv4 } from 'uuid';
-import { printerSchema } from "./printerSchema";
+import { PrinterProps } from '@entity/printer/PrinterProps';
+import { printerSchema } from "@entity/printer/printerSchema";
 
 class Printer {
     private props: PrinterProps;
     constructor(props: Omit<PrinterProps, 'id'>, id?: string) {
         try {
-            if(!id) {
+            if (!id) {
                 id = uuidv4();
             }
             const data = { id, ...props };
@@ -141,4 +141,4 @@ class Printer {
 
 export {
     Printer
-}
+};

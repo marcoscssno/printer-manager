@@ -1,6 +1,5 @@
-import { object, string, boolean, number, date, array, ObjectSchema } from 'yup';
-import { printerSupplySchema } from '@entity/printerSupply/printerSupplySchema';
-import { PrinterProps } from './PrinterProps';
+import { ObjectSchema, boolean, date, number, object, string } from 'yup';
+import { PrinterProps } from '@entity/printer/PrinterProps';
 
 const printerSchema: ObjectSchema<PrinterProps> = object({
     id: string().uuid().required(),
@@ -17,6 +16,6 @@ const printerSchema: ObjectSchema<PrinterProps> = object({
     deletedAt: date().nullable().optional()
 });
 
-export { 
+export {
     printerSchema
-}
+};

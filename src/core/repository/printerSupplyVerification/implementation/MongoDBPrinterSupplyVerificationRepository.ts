@@ -1,6 +1,6 @@
-import { PrinterSuppliesDTO } from "../../../service/checkPrinterSupply/PrinterSuppliesDTO";
-import { PrinterSupplyVerificationRepositoryInterface } from "../PrinterSupplyVerificationRepositoryInterface";
 import { MongoClient } from "mongodb";
+import { PrinterSuppliesDTO } from "@service/checkPrinterSupply/PrinterSuppliesDTO";
+import { PrinterSupplyVerificationRepositoryInterface } from "@repository/printerSupplyVerification/PrinterSupplyVerificationRepositoryInterface";
 
 class MongoDBPrinterSupplyVerificationRepository implements PrinterSupplyVerificationRepositoryInterface {
     private client: MongoClient;
@@ -11,7 +11,7 @@ class MongoDBPrinterSupplyVerificationRepository implements PrinterSupplyVerific
         try {
             await this.client.db('printers').collection('printerSupplyVerifications').insertOne(data);
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
         }
     }
@@ -20,13 +20,13 @@ class MongoDBPrinterSupplyVerificationRepository implements PrinterSupplyVerific
             const printerSupplyVerifications = await this.client.db('printers').collection('printerSupplyVerifications').find().toArray();
             return printerSupplyVerifications;
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
             return [];
         }
-    }   
+    }
 }
 
 export {
     MongoDBPrinterSupplyVerificationRepository
-}
+};

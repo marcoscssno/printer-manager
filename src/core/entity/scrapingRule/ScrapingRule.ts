@@ -5,4 +5,4 @@ class ScrapingRule {
 
 export {
     ScrapingRule
-}
+};

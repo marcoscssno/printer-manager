@@ -1,7 +1,7 @@
-import { InMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
-import { UpdatePrinterUseCase } from "@useCase/printer/update/updatePrinterUseCase";
-import { fakePrinter } from "@shared/fake/fakePrinter";
 import { Printer } from "@entity/printer/Printer";
+import { InMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
+import { fakePrinter } from "@shared/fake/fakePrinter";
+import { UpdatePrinterUseCase } from "@useCase/printer/update/updatePrinterUseCase";
 
 const inMemoryPrinterRepository = new InMemoryPrinterRepository();
 
@@ -22,7 +22,7 @@ describe('It should update a printer', () => {
         const printerData = { ...fakePrinter(), ...metaData };
         const printer = new Printer(printerData);
         const printerProps = printer.getProps();
-        const updatePrinter = async() => await sut.execute(id, printerProps);
+        const updatePrinter = async () => await sut.execute(id, printerProps);
 
         expect(updatePrinter).rejects.toThrow();
     });
@@ -41,7 +41,7 @@ describe('It should update a printer', () => {
         const printerFromRepository = await inMemoryPrinterRepository.findById(id);
 
         await sut.execute(id, { ipAddress: newIpAddress, manufacturer: printer.getManufacturer() });
-        
+
         expect(printerFromRepository?.ipAddress).toBe(newIpAddress);
     });
 });

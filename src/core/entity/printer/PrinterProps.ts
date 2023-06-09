@@ -1,7 +1,3 @@
-import { InferType } from "yup"
-import { PrinterSupply } from "../printerSupply/PrinterSupply"
-import { printerSchema } from "./printerSchema"
-
 interface PrinterProps {
     readonly id: string,
     ipAddress?: string | null,

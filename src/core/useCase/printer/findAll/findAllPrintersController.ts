@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
 import { FindAllPrintersUseCase } from "@useCase/printer/findAll/findAllPrintersUseCase";
+import { Request, Response } from 'express';
 
-export class FindAllPrintersController {
+class FindAllPrintersController {
     constructor(
         private findAllPrintersUseCase: FindAllPrintersUseCase
     ) { }
@@ -17,3 +17,7 @@ export class FindAllPrintersController {
         }
     }
 }
+
+export {
+    FindAllPrintersController
+};

@@ -1,6 +1,6 @@
-import { Printer } from "../../../entity/printer/Printer";
-import { PrinterRepositoryInterface } from "../PrinterRepositoryInterface";
 import { MongoClient } from "mongodb";
+import { Printer } from "@entity/printer/Printer";
+import { PrinterRepositoryInterface } from "@repository/printer/PrinterRepositoryInterface";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     private client: MongoClient;
@@ -27,9 +27,9 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
                 deletedAt: printer.getDeletedAt()
             }
             console.log(newPrinter);
-            await this.client.db('printers').collection<{_id: string}>('myPrinters').insertOne(newPrinter);
+            await this.client.db('printers').collection<{ _id: string }>('myPrinters').insertOne(newPrinter);
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
         }
     }
@@ -50,4 +50,4 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
 
 export {
     MongoDBPrinterRepository
-}
+};

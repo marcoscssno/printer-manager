@@ -11,13 +11,6 @@ const fakeRecentDate = () => faker.date.recent();
 const fakeUserName = () => (faker.person.firstName() + '.' + faker.person.lastName()).toLowerCase();
 
 export {
-    fakeIpAddress,
-    fakeManufacturer,
-    fakeModel,
-    fakeSerialNumber,
-    fakePropertyNumber,
-    fakeId,
-    fakeLevel,
-    fakeRecentDate,
-    fakeUserName
-}
+    fakeId, fakeIpAddress, fakeLevel, fakeManufacturer,
+    fakeModel, fakePropertyNumber, fakeRecentDate, fakeSerialNumber, fakeUserName
+};

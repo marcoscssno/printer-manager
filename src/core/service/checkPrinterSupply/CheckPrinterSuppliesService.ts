@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import { PrinterSuppliesDTO } from './PrinterSuppliesDTO';
+import { PrinterSuppliesDTO } from '@service/checkPrinterSupply/PrinterSuppliesDTO';
 
 class CheckPrinterSuppliesService {
     constructor() { }
@@ -42,4 +42,4 @@ class CheckPrinterSuppliesService {
 
 export {
     CheckPrinterSuppliesService
-}
+};

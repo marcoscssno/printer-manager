@@ -1,7 +1,7 @@
-import { fakeIpAddress, fakeManufacturer, fakeModel, fakeSerialNumber, fakePropertyNumber, fakeId, fakeLevel, fakeRecentDate, fakeUserName } from './fakeProp';
+import { fakeIpAddress, fakeManufacturer, fakeModel, fakePropertyNumber, fakeSerialNumber } from './fakeProp';
 
 const fakePrinter = () => {
-    return {    
+    return {
         ipAddress: fakeIpAddress(),
         manufacturer: fakeManufacturer(),
         model: fakeModel(),
@@ -12,4 +12,4 @@ const fakePrinter = () => {
 
 export {
     fakePrinter
-}
+};

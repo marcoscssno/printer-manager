@@ -13,7 +13,7 @@ class PrinterSupply {
 
     constructor(props: Omit<PrinterSupply, 'id'>, id?: string) {
         Object.assign(this, props);
-        if(!id) {
+        if (!id) {
             this.id = uuidv4();
         }
     }
@@ -21,4 +21,4 @@ class PrinterSupply {
 
 export {
     PrinterSupply
-}
+};
