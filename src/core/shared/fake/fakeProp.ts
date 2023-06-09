@@ -6,7 +6,7 @@ const fakeModel = () => faker.string.alpha({ casing: 'upper', length: 3 }) + fak
 const fakeSerialNumber = () => faker.string.alphanumeric({ casing: 'upper', length: 12 });
 const fakePropertyNumber = () => faker.number.int({ min: 100000, max: 999999 });
 const fakeId = () => faker.string.uuid();
-const fakeLevel = () => faker.string.numeric(2);
+const fakeLevel = () => faker.number.int({ min: 0, max: 100 });
 const fakeRecentDate = () => faker.date.recent();
 const fakeUserName = () => (faker.person.firstName() + '.' + faker.person.lastName()).toLowerCase();
 
