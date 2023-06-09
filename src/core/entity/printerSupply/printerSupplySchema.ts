@@ -1,17 +1,19 @@
-import { object, string, number, boolean, date, ObjectSchema } from 'yup';
-import { PrinterSupply } from './PrinterSupply';
+import { PrinterSupplyProps } from '@entity/printerSupply/PrinterSupplyProps';
+import { ObjectSchema, boolean, date, number, object, string } from 'yup';
 
-const printerSupplySchema: ObjectSchema<PrinterSupply> = object({
-    name: string(),
-    level: number().min(0).max(100),
-    createdAt: date(),
-    createdBy: string(),
-    lastUpdatedAt: date().nullable(),
-    lastUpdatedBy: string().nullable(),
-    isDeleted: boolean(),
-    deletedAt: date().nullable()
+const printerSupplySchema: ObjectSchema<PrinterSupplyProps> = object({
+    id: string().uuid().required(),
+    printerSupplyTypeId: string().uuid().required(),
+    name: string().required(),
+    level: number().min(0).max(100).nullable().optional(),
+    createdAt: date().required(),
+    createdBy: string().required(),
+    lastUpdatedAt: date().nullable().optional(),
+    lastUpdatedBy: string().nullable().optional(),
+    isDeleted: boolean().required(),
+    deletedAt: date().nullable().optional()
 });
 
 export {
     printerSupplySchema
-}
+};
