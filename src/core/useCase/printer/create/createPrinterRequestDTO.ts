@@ -1,4 +1,4 @@
-import { PrinterSupply } from "@entity/printerSupply/PrinterSupply";
+import { PrinterSupplyProps } from "@entity/printerSupply/PrinterSupplyProps";
 
 type CreatePrinterRequestDTO = {
     ipAddress?: string | null,
@@ -6,6 +6,7 @@ type CreatePrinterRequestDTO = {
     model?: string | null,
     serialNumber?: string | null,
     propertyNumber?: number | null,
+    supply?: PrinterSupplyProps[]
 }
 
 export {
