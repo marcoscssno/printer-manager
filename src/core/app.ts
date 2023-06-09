@@ -1,5 +1,5 @@
 import express from 'express';
-import { router } from './routes';
+import { printerRouter } from '@routes/printerRouter';
 import dotenv from 'dotenv'
 
 dotenv.config();
@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(router);
+app.use(printerRouter);
 
 export {
     app
