@@ -6,7 +6,7 @@ export class CreatePrinterController {
         private createPrinterUseCase: CreatePrinterUseCase
     ) { }
     async handle(request: Request, response: Response): Promise<Response> {
-        const { ipAddress, manufacturer, model, serialNumber, propertyNumber } = request.body;
+        const { ipAddress, manufacturer, model, serialNumber, propertyNumber, supply } = request.body;
 
         try {
             await this.createPrinterUseCase.execute({
@@ -14,7 +14,8 @@ export class CreatePrinterController {
                 manufacturer,
                 model,
                 serialNumber,
-                propertyNumber
+                propertyNumber,
+                supply
             })
 
             return response.status(201).send();
