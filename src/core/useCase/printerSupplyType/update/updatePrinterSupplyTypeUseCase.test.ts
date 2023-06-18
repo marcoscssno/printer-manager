@@ -3,8 +3,9 @@ import { UpdatePrinterSupplyTypeUseCase } from "@useCase/printerSupplyType/updat
 import { fakePrinterSupplyType } from "@shared/fake/fakePrinterSupplyType";
 import { PrinterSupplyType } from "@entity/printerSupplyType/PrinterSupplyType";
 import { fakeMetaData } from "@shared/fake/fakeMetaData";
+import { inMemoryState } from "@utils/InMemoryState";
 
-const inMemoryPrinterSupplyTypeRepository = new InMemoryPrinterSupplyTypeRepository();
+const inMemoryPrinterSupplyTypeRepository = new InMemoryPrinterSupplyTypeRepository(inMemoryState);
 
 const makeSut = () => {
     const sut = new UpdatePrinterSupplyTypeUseCase(inMemoryPrinterSupplyTypeRepository);

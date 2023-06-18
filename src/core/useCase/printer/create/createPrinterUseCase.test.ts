@@ -1,8 +1,9 @@
 import { InMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
 import { CreatePrinterUseCase } from "./createPrinterUseCase";
 import { fakePrinter } from "@shared/fake/fakePrinter";
+import { inMemoryState } from "@utils/InMemoryState";
 
-const inMemoryPrinterRepository = new InMemoryPrinterRepository();
+const inMemoryPrinterRepository = new InMemoryPrinterRepository(inMemoryState);
 
 const makeSut = () => {
     const sut = new CreatePrinterUseCase(inMemoryPrinterRepository);

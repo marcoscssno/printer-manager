@@ -6,7 +6,7 @@ class FindAllPrintersUseCase {
         private printerRepository: PrinterRepositoryInterface
     ) {}
     async execute(): Promise<PrinterProps[] | []> {
-        const printers = this.printerRepository.findAll();
+        const printers = await this.printerRepository.findAll();
         return printers;
     }
 }
