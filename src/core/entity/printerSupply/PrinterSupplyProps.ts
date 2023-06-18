@@ -1,7 +1,7 @@
 type PrinterSupplyProps = {
     id: string,
     printerSupplyTypeId: string,
-    name: string,
+    name?: string,
     level?: number | null,
     readonly createdAt: Date,
     readonly createdBy: string,

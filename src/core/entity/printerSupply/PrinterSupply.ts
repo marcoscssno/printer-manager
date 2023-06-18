@@ -36,7 +36,7 @@ class PrinterSupply {
             throw new Error(error);
         }
     }
-    getName(): string {
+    getName(): string | undefined {
         return this.props.name;
     }
     setName(name: string): void {
