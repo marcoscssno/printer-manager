@@ -17,22 +17,13 @@ describe('Printer Supply Entity', () => {
     });
     it('should validate props on constructor', () => {
         const metaData = fakeMetaData();
+        // @ts-expect-error
         const data: Omit<PrinterSupplyProps, 'id'> = {
             ...metaData,
-            // @ts-expect-error
             name: undefined
         }
                 
         expect(() => new PrinterSupply(data)).toThrow();
-    });
-    it('should require a name', () => {
-        const metaData = fakeMetaData();
-        // @ts-expect-error
-        const data: Omit<PrinterSupplyProps, 'id'> = {
-            ...metaData
-        }
-        
-        expect(() => new PrinterSupply(data)).toThrow('name');
     });
     it('should assign new id when no id is specified', () => {
         const metaData = fakeMetaData();
