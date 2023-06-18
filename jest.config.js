@@ -9,6 +9,7 @@ module.exports = {
     '^@service/(.*)$': '<rootDir>/src/core/service/$1',
     '^@useCase/(.*)$': '<rootDir>/src/core/useCase/$1',
     '^@shared/(.*)$': '<rootDir>/src/core/shared/$1',
-    '^@routes/(.*)$': '<rootDir>/src/core/routes/$1'
+    '^@routes/(.*)$': '<rootDir>/src/core/routes/$1',
+    '^@utils/(.*)$': '<rootDir>/src/core/utils/$1'
   },
 };

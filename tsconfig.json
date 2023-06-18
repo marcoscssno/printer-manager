@@ -8,7 +8,8 @@
             "@service/*": ["core/service/*"],
             "@useCase/*": ["core/useCase/*"],
             "@shared/*": ["core/shared/*"],
-            "@routes/*": ["core/routes/*"]
+            "@routes/*": ["core/routes/*"],
+            "@utils/*": ["core/utils/*"]
         },
         "esModuleInterop": true,
         "moduleResolution": "Node",
