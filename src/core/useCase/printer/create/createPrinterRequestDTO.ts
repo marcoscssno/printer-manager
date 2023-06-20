@@ -11,4 +11,4 @@ type CreatePrinterRequestDTO = {
 
 export {
     CreatePrinterRequestDTO
-}
+};

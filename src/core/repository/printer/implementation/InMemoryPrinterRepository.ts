@@ -28,31 +28,31 @@ class InMemoryPrinterRepository implements PrinterRepositoryInterface {
     async update(id: string, printer: PrinterProps): Promise<void> {
         const targetPrinter = this.state.printers.find(printer => printer.id === id && printer.isDeleted === false);
         if (targetPrinter) {
-            if(printer.ipAddress !== undefined) {
+            if (printer.ipAddress !== undefined) {
                 targetPrinter.ipAddress = printer.ipAddress;
             }
-            if(printer.manufacturer !== undefined) {
+            if (printer.manufacturer !== undefined) {
                 targetPrinter.manufacturer = printer.manufacturer;
             }
-            if(printer.model !== undefined) {
+            if (printer.model !== undefined) {
                 targetPrinter.model = printer.model;
             }
-            if(printer.serialNumber !== undefined) {
+            if (printer.serialNumber !== undefined) {
                 targetPrinter.serialNumber = printer.serialNumber;
             }
-            if(printer.propertyNumber !== undefined) {
+            if (printer.propertyNumber !== undefined) {
                 targetPrinter.propertyNumber = printer.propertyNumber;
             }
-            if(printer.lastUpdatedAt !== undefined) {
+            if (printer.lastUpdatedAt !== undefined) {
                 targetPrinter.lastUpdatedAt = printer.lastUpdatedAt;
             }
-            if(printer.lastUpdatedBy !== undefined) {
+            if (printer.lastUpdatedBy !== undefined) {
                 targetPrinter.lastUpdatedBy = printer.lastUpdatedBy;
             }
-            if(printer.isDeleted !== undefined) {
+            if (printer.isDeleted !== undefined) {
                 targetPrinter.isDeleted = printer.isDeleted;
             }
-            if(printer.deletedAt !== undefined) {
+            if (printer.deletedAt !== undefined) {
                 targetPrinter.deletedAt = printer.deletedAt;
             }
         }
@@ -73,4 +73,4 @@ const inMemoryPrinterRepository = new InMemoryPrinterRepository(inMemoryState);
 export {
     InMemoryPrinterRepository,
     inMemoryPrinterRepository
-}
+};

@@ -23,11 +23,11 @@ describe('Find All Printers Use Case', () => {
         const firstPrinter = new Printer(firstPrinterData);
         const secondPrinterData = { ...fakePrinter(), ...metaData };
         const secondPrinter = new Printer(secondPrinterData);
-        
+
         await inMemoryPrinterRepository.save(firstPrinter.getProps());
         await inMemoryPrinterRepository.save(secondPrinter.getProps());
         const allPrinters = await sut.execute();
-        
+
         expect(allPrinters[0]).toBe(firstPrinter.getProps());
         expect(allPrinters[1]).toBe(secondPrinter.getProps());
     });

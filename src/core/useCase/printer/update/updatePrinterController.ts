@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
 import { UpdatePrinterUseCase } from "@useCase/printer/update/updatePrinterUseCase";
+import { Request, Response } from 'express';
 
-export class UpdatePrinterController {
+class UpdatePrinterController {
     constructor(
         private updatePrinterUseCase: UpdatePrinterUseCase
     ) { }
@@ -28,3 +28,7 @@ export class UpdatePrinterController {
         }
     }
 }
+
+export {
+    UpdatePrinterController
+};

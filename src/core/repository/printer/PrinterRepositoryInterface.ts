@@ -11,4 +11,4 @@ interface PrinterRepositoryInterface {
 
 export {
     PrinterRepositoryInterface
-}
+};

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { FindPrinterByIdUseCase } from "./findPrinterByIdUseCase";
+import { FindPrinterByIdUseCase } from "@useCase/printer/findById/findPrinterByIdUseCase";
 
 class FindPrinterByIdController {
     constructor(
@@ -21,4 +21,4 @@ class FindPrinterByIdController {
 
 export {
     FindPrinterByIdController
-}
+};

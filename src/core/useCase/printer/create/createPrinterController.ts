@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
 import { CreatePrinterUseCase } from "@useCase/printer/create/createPrinterUseCase";
+import { Request, Response } from 'express';
 
-export class CreatePrinterController {
+class CreatePrinterController {
     constructor(
         private createPrinterUseCase: CreatePrinterUseCase
     ) { }
@@ -27,3 +27,7 @@ export class CreatePrinterController {
         }
     }
 }
+
+export {
+    CreatePrinterController
+};

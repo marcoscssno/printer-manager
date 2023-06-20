@@ -1,3 +1,4 @@
+import { Printer } from "@entity/printer/Printer";
 import { PrinterRepositoryInterface } from "@repository/printer/PrinterRepositoryInterface";
 import { CreatePrinterRequestDTO } from "./createPrinterRequestDTO";
 import { Printer } from "@entity/printer/Printer";
@@ -58,4 +59,4 @@ class CreatePrinterUseCase {
 
 export {
     CreatePrinterUseCase
-}
+};
