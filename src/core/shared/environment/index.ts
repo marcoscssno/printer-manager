@@ -1,5 +1,6 @@
-const { PORT } = process.env;
+const { PORT, MONGODB_URI } = process.env;
 
 export {
-    PORT
+    PORT,
+    MONGODB_URI
 }
