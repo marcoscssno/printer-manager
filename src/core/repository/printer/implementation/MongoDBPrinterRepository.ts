@@ -1,45 +1,45 @@
-import { Printer } from "../../../entity/printer/Printer";
+import { PrinterProps } from "@entity/printer/PrinterProps";
 import { PrinterRepositoryInterface } from "../PrinterRepositoryInterface";
-import { MongoClient } from "mongodb";
+import { mongoDBHelper } from "@helper/MongoDBHelper";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
-    private client: MongoClient;
-    constructor(client: MongoClient) {
-        this.client = client;
+    async findBySerialNumber(serialNumber: string): Promise<PrinterProps | null> {
+        const client = await mongoDBHelper.getClient();
+        const printer = await client.db().collection<PrinterProps>("printers").findOne({ serialNumber });
+        return printer || null;
     }
-    findBySerialNumber(serialNumber: string): Promise<Printer | null> {
-        throw new Error("Method not implemented.");
-    }
-    async save(printer: Printer): Promise<void> {
+    async save(printer: PrinterProps): Promise<void> {
+        const client = await mongoDBHelper.getClient();
         try {
             const newPrinter = {
-                _id: printer.getId(),
-                ipAddress: printer.getIpAddress(),
-                manufacturer: printer.getManufacturer(),
-                model: printer.getModel(),
-                serialNumber: printer.getSerialNumber(),
-                propertyNumber: printer.getPropertyNumber(),
-                createdAt: printer.getCreatedAt(),
-                createdBy: printer.getCreatedBy(),
-                lastUpdatedAt: printer.getLastUpdatedAt(),
-                lastUpdatedBy: printer.getLastUpdatedBy(),
-                isDeleted: printer.getIsDeleted(),
-                deletedAt: printer.getDeletedAt()
+                _id: printer.id,
+                ipAddress: printer.ipAddress,
+                manufacturer: printer.manufacturer,
+                model: printer.model,
+                serialNumber: printer.serialNumber,
+                propertyNumber: printer.propertyNumber,
+                createdAt: printer.createdAt,
+                createdBy: printer.createdBy,
+                lastUpdatedAt: printer.lastUpdatedAt,
+                lastUpdatedBy: printer.lastUpdatedBy,
+                isDeleted: printer.isDeleted,
+                deletedAt: printer.deletedAt
             }
-            console.log(newPrinter);
-            await this.client.db('printers').collection<{_id: string}>('myPrinters').insertOne(newPrinter);
+            await client.db().collection<{ _id: string} >("printers").insertOne(newPrinter);
         }
-        catch(error) {
+        catch (error) {
             console.error(error);
         }
     }
-    findById(id: string): Promise<Printer | null> {
+    findById(id: string): Promise<PrinterProps | null> {
         throw new Error("Method not implemented.");
     }
-    findAll(): Promise<[] | Printer[]> {
-        throw new Error("Method not implemented.");
+    async findAll(): Promise<[] | PrinterProps[]> {
+        const client = await mongoDBHelper.getClient();
+        const printers = await client.db().collection<PrinterProps>("printers").find().toArray();
+        return printers;
     }
-    update(id: string, printer: Printer): Promise<void> {
+    update(id: string, printer: PrinterProps): Promise<void> {
         throw new Error("Method not implemented.");
     }
     delete(id: string): Promise<void> {
