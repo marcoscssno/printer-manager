@@ -1,29 +1,41 @@
 import { MongoClient } from 'mongodb';
+import { MONGODB_URI } from '@shared/environment';
 
 class MongoDBHelper {
-
-    private client: MongoClient;
-
-    async connect(): Promise<void> {
-        const uri = "MONGODB_URI";
-        const client = new MongoClient(uri);
-        this.client = client;
-        try {
-            await client.connect();
+    private client: MongoClient | null = null;
+    private uri: string | null = null
+    async connect(uri: string | null = null): Promise<void> {
+        this.uri = uri;
+        if (!this.uri) {
+            throw new Error('MongoDB uri is not defined');
         }
-        catch (error) {
-            console.error(error);
-        }
+        this.client = await MongoClient.connect(this.uri);
     }
-
-    getClient(): MongoClient {
+    async getClient(): Promise<MongoClient> {
+        if(!this.client) {
+            await this.connect();
+            return this.client!;
+        }
         return this.client;
     }
 }
 
 const mongoDBHelper = new MongoDBHelper();
 
+// const mongoDBHelper = async () => {
+//     if (!MONGODB_URI) {
+//         throw new Error('MONGODB_URI is not defined');
+//     }
+//     const client = new MongoClient(MONGODB_URI);
+//     try {
+//         await client.connect();
+//     }
+//     catch (error) {
+//         throw new Error(error);
+//     }
+//     return client;
+// };
+
 export {
-    MongoDBHelper,
     mongoDBHelper
 }
