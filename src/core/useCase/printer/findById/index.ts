@@ -1,8 +1,12 @@
 import { FindPrinterByIdUseCase } from "@useCase/printer/findById/findPrinterByIdUseCase";
 import { FindPrinterByIdController } from "@useCase/printer/findById/findPrinterByIdController";
-import { inMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
+import { MongoDBPrinterRepository } from "@repository/printer/implementation/MongoDBPrinterRepository";
+// import { inMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
 
-const findPrinterByIdUseCase = new FindPrinterByIdUseCase(inMemoryPrinterRepository);
+const mongoDBPrinterRepository = new MongoDBPrinterRepository();
+
+// const findPrinterByIdUseCase = new FindPrinterByIdUseCase(inMemoryPrinterRepository);
+const findPrinterByIdUseCase = new FindPrinterByIdUseCase(mongoDBPrinterRepository);
 
 const findPrinterByIdController = new FindPrinterByIdController(findPrinterByIdUseCase);
 

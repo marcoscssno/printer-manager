@@ -1,8 +1,12 @@
 import { DeletePrinterUseCase } from "@useCase/printer/delete/deletePrinterUseCase";
 import { DeletePrinterController } from "@useCase/printer/delete/deletePrinterController";
-import { inMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
+import { MongoDBPrinterRepository } from "@repository/printer/implementation/MongoDBPrinterRepository";
+// import { inMemoryPrinterRepository } from "@repository/printer/implementation/InMemoryPrinterRepository";
 
-const deletePrinterUseCase = new DeletePrinterUseCase(inMemoryPrinterRepository);
+const mongoDBPrinterRepository = new MongoDBPrinterRepository();
+
+// const deletePrinterUseCase = new DeletePrinterUseCase(inMemoryPrinterRepository);
+const deletePrinterUseCase = new DeletePrinterUseCase(mongoDBPrinterRepository);
 
 const deletePrinterController = new DeletePrinterController(deletePrinterUseCase);
 
