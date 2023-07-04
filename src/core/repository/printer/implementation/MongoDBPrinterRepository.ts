@@ -1,6 +1,10 @@
 import { PrinterProps } from "@entity/printer/PrinterProps";
 import { PrinterRepositoryInterface } from "../PrinterRepositoryInterface";
 import { mongoDBHelper } from "@helper/MongoDBHelper";
+import { mapPrinterToMongoDB } from "@entity/printer/mapPrinterToMongoDB";
+import { mapPrinterFromMongoDB } from "@entity/printer/mapPrinterFromMongoDB";
+import { MongoDBPrinterDTO } from "@entity/printer/MongoDBPrinterDTO";
+import { mapPrinterSupplyToMongoDB } from "@entity/printerSupply/mapPrinterSupplyToMongoDB";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async findBySerialNumber(serialNumber: string): Promise<PrinterProps | null> {
@@ -11,39 +15,69 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async save(printer: PrinterProps): Promise<void> {
         const client = await mongoDBHelper.getClient();
         try {
-            const newPrinter = {
-                _id: printer.id,
-                ipAddress: printer.ipAddress,
-                manufacturer: printer.manufacturer,
-                model: printer.model,
-                serialNumber: printer.serialNumber,
-                propertyNumber: printer.propertyNumber,
-                createdAt: printer.createdAt,
-                createdBy: printer.createdBy,
-                lastUpdatedAt: printer.lastUpdatedAt,
-                lastUpdatedBy: printer.lastUpdatedBy,
-                isDeleted: printer.isDeleted,
-                deletedAt: printer.deletedAt
-            }
-            await client.db().collection<{ _id: string} >("printers").insertOne(newPrinter);
+            const mongoDBPrinter = mapPrinterToMongoDB(printer);
+            await client.db().collection<MongoDBPrinterDTO>("printers").insertOne(mongoDBPrinter);
         }
         catch (error) {
             console.error(error);
         }
     }
-    findById(id: string): Promise<PrinterProps | null> {
-        throw new Error("Method not implemented.");
+    async findById(id: string): Promise<PrinterProps | null> {
+        const client = await mongoDBHelper.getClient();
+        const printerFromMongoDB = await client.db().collection<MongoDBPrinterDTO>("printers").findOne({ _id: id, isDeleted: false });
+        if (!printerFromMongoDB) {
+            return null;
+        }
+        const printer = mapPrinterFromMongoDB(printerFromMongoDB);
+        return printer.getProps();
     }
     async findAll(): Promise<[] | PrinterProps[]> {
+        let printers: PrinterProps[] = []
         const client = await mongoDBHelper.getClient();
-        const printers = await client.db().collection<PrinterProps>("printers").find().toArray();
+        const printersFromMongoDB = await client.db().collection<MongoDBPrinterDTO>("printers").aggregate(
+            [
+                {
+                    $match: { isDeleted: false }
+                },
+                {
+                    $lookup: {
+                        from: "printerSupplyTypes",
+                        localField: "supply.printerSupplyTypeId",
+                        foreignField: "_id",
+                        as: "printerSupplyType"
+                    }
+                },
+                {
+                    $set: {
+                        supply: {
+                            printerSupplyType: {
+                                $first: "$printerSupplyType"
+                            }
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        printerSupplyType: 0
+                    }
+                }
+            ]
+        ).toArray();
+        printersFromMongoDB.forEach(printerFromMongoDB => {
+            console.log(printerFromMongoDB.manufacturer);
+            const printer = mapPrinterFromMongoDB(printerFromMongoDB);
+            printers.push(printer.getProps());
+        });
         return printers;
     }
-    update(id: string, printer: PrinterProps): Promise<void> {
-        throw new Error("Method not implemented.");
+    async update(id: string, printer: PrinterProps): Promise<void> {
+        const mongoDBPrinter = mapPrinterToMongoDB(printer);
+        const client = await mongoDBHelper.getClient();
+        await client.db().collection<MongoDBPrinterDTO>("printers").findOneAndUpdate({ _id: id, isDeleted: false }, { $set: mongoDBPrinter });
     }
-    delete(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    async delete(id: string, date: Date): Promise<void> {
+        const client = await mongoDBHelper.getClient();
+        await client.db().collection<MongoDBPrinterDTO>("printers").findOneAndUpdate({ _id: id, isDeleted: false }, { $set: { isDeleted: true, deletedAt: date } });
     }
 
 }

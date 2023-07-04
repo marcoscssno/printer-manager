@@ -5,6 +5,7 @@ import { MongoDBPrinterRepository } from "@repository/printer/implementation/Mon
 
 const mongoDBPrinterRepository = new MongoDBPrinterRepository();
 
+// const createPrinterUseCase = new CreatePrinterUseCase(inMemoryPrinterRepository);
 const createPrinterUseCase = new CreatePrinterUseCase(mongoDBPrinterRepository);
 
 const createPrinterController = new CreatePrinterController(createPrinterUseCase);

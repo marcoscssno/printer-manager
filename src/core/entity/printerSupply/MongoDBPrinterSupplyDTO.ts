@@ -1,9 +1,9 @@
-import { PrinterSupplyTypeProps } from "@entity/printerSupplyType/PrinterSupplyTypeProps";
+import { MongoDBPrinterSupplyTypeDTO } from "@entity/printerSupplyType/MongoDBPrinterSupplyTypeDTO";
 
-type PrinterSupplyProps = {
-    readonly id: string,
+type MongoDBPrinterSupplyDTO = {
+    readonly _id: string,
     printerSupplyTypeId: string,
-    printerSupplyType?: PrinterSupplyTypeProps | null,
+    printerSupplyType?: MongoDBPrinterSupplyTypeDTO | null,
     level?: number | null,
     readonly createdAt: Date,
     readonly createdBy: string,
@@ -11,8 +11,8 @@ type PrinterSupplyProps = {
     lastUpdatedBy?: string | null,
     isDeleted: boolean,
     deletedAt?: Date | null
-}
+};
 
 export {
-    PrinterSupplyProps
+    MongoDBPrinterSupplyDTO
 };

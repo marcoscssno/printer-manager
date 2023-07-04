@@ -30,6 +30,5 @@ describe('Delete Printer Supply Type Use Case', () => {
         await sut.execute(id);
 
         expect(allPrinters[0].isDeleted).toBeTruthy();
-        console.log(allPrinters[0]);
     });
 });

@@ -36,18 +36,6 @@ class PrinterSupply {
             throw new Error(error);
         }
     }
-    getName(): string | undefined {
-        return this.props.name;
-    }
-    setName(name: string): void {
-        try {
-            const validatedProp = printerSupplySchema.validateSyncAt('name', name, { strict: true });
-            this.props.name = validatedProp;
-        }
-        catch (error) {
-            throw new Error(error);
-        }
-    }
     getLevel(): number | null {
         return this.props.level || null;
     }

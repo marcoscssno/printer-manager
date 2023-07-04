@@ -27,6 +27,7 @@ class CreatePrinterUseCase {
             supply.forEach((element) => {
                 const newSupply = new PrinterSupply({
                     ...element,
+                    printerSupplyType: null,
                     createdAt,
                     createdBy,
                     lastUpdatedAt,
