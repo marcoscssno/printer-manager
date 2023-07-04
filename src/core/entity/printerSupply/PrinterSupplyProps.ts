@@ -1,7 +1,9 @@
+import { PrinterSupplyTypeProps } from "@entity/printerSupplyType/PrinterSupplyTypeProps";
+
 type PrinterSupplyProps = {
-    id: string,
+    readonly id: string,
     printerSupplyTypeId: string,
-    name?: string,
+    printerSupplyType?: PrinterSupplyTypeProps | null,
     level?: number | null,
     readonly createdAt: Date,
     readonly createdBy: string,
