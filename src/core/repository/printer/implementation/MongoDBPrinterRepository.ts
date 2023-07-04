@@ -4,6 +4,7 @@ import { mongoDBHelper } from "@helper/MongoDBHelper";
 import { mapPrinterToMongoDB } from "@entity/printer/mapPrinterToMongoDB";
 import { mapPrinterFromMongoDB } from "@entity/printer/mapPrinterFromMongoDB";
 import { MongoDBPrinterDTO } from "@entity/printer/MongoDBPrinterDTO";
+import { mapPrinterSupplyToMongoDB } from "@entity/printerSupply/mapPrinterSupplyToMongoDB";
 
 class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async findBySerialNumber(serialNumber: string): Promise<PrinterProps | null> {
@@ -24,7 +25,7 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async findById(id: string): Promise<PrinterProps | null> {
         const client = await mongoDBHelper.getClient();
         const printerFromMongoDB = await client.db().collection<MongoDBPrinterDTO>("printers").findOne({ _id: id, isDeleted: false });
-        if(!printerFromMongoDB) {
+        if (!printerFromMongoDB) {
             return null;
         }
         const printer = mapPrinterFromMongoDB(printerFromMongoDB);
@@ -33,8 +34,37 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async findAll(): Promise<[] | PrinterProps[]> {
         let printers: PrinterProps[] = []
         const client = await mongoDBHelper.getClient();
-        const printersFromMongoDB = await client.db().collection<MongoDBPrinterDTO>("printers").find({ isDeleted: false }).toArray();
+        const printersFromMongoDB = await client.db().collection<MongoDBPrinterDTO>("printers").aggregate(
+            [
+                {
+                    $match: { isDeleted: false }
+                },
+                {
+                    $lookup: {
+                        from: "printerSupplyTypes",
+                        localField: "supply.printerSupplyTypeId",
+                        foreignField: "_id",
+                        as: "printerSupplyType"
+                    }
+                },
+                {
+                    $set: {
+                        supply: {
+                            printerSupplyType: {
+                                $first: "$printerSupplyType"
+                            }
+                        }
+                    }
+                },
+                {
+                    $project: {
+                        printerSupplyType: 0
+                    }
+                }
+            ]
+        ).toArray();
         printersFromMongoDB.forEach(printerFromMongoDB => {
+            console.log(printerFromMongoDB.manufacturer);
             const printer = mapPrinterFromMongoDB(printerFromMongoDB);
             printers.push(printer.getProps());
         });
@@ -47,7 +77,7 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     }
     async delete(id: string, date: Date): Promise<void> {
         const client = await mongoDBHelper.getClient();
-        await client.db().collection<MongoDBPrinterDTO>("printers").findOneAndUpdate({ _id: id, isDeleted: false }, { $set: { isDeleted: true, deletedAt: date }});
+        await client.db().collection<MongoDBPrinterDTO>("printers").findOneAndUpdate({ _id: id, isDeleted: false }, { $set: { isDeleted: true, deletedAt: date } });
     }
 
 }
