@@ -17,10 +17,10 @@ describe('Printer Supply Entity', () => {
     });
     it('should validate props on constructor', () => {
         const metaData = fakeMetaData();
-        // @ts-expect-error
         const data: Omit<PrinterSupplyProps, 'id'> = {
             ...metaData,
-            name: undefined
+            // @ts-expect-error
+            printerSupplyTypeId: undefined
         }
                 
         expect(() => new PrinterSupply(data)).toThrow();
