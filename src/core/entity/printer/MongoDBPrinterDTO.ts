@@ -1,4 +1,4 @@
-import { PrinterSupplyProps } from "@entity/printerSupply/PrinterSupplyProps";
+import { MongoDBPrinterSupplyDTO } from "@entity/printerSupply/MongoDBPrinterSupplyDTO";
 
 type MongoDBPrinterDTO = {
     readonly _id: string,
@@ -7,7 +7,7 @@ type MongoDBPrinterDTO = {
     model?: string | null,
     serialNumber?: string | null,
     propertyNumber?: number | null,
-    supply?: PrinterSupplyProps[],
+    supply?: MongoDBPrinterSupplyDTO[],
     readonly createdAt: Date,
     readonly createdBy: string,
     lastUpdatedAt?: Date | null,
