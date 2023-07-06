@@ -34,31 +34,42 @@ class MongoDBPrinterRepository implements PrinterRepositoryInterface {
     async findAll(): Promise<[] | PrinterProps[]> {
         let printers: PrinterProps[] = []
         const client = await mongoDBHelper.getClient();
-        const printersFromMongoDB = await client.db().collection<MongoDBPrinterDTO>("printers").aggregate(
+        const printersFromMongoDB = await client.db().collection("printers").aggregate<MongoDBPrinterDTO>(
             [
-                {
-                    $match: { isDeleted: false }
-                },
                 {
                     $lookup: {
                         from: "printerSupplyTypes",
                         localField: "supply.printerSupplyTypeId",
                         foreignField: "_id",
-                        as: "printerSupplyType"
-                    }
+                        as: "printerSupplyTypes"
+                    },
                 },
                 {
-                    $set: {
+                    $addFields: {
                         supply: {
-                            printerSupplyType: {
-                                $first: "$printerSupplyType"
+                            $map: {
+                                input: "$supply",
+                                as: "currentSupply",
+                                in: {
+                                    $mergeObjects: [
+                                        "$$currentSupply",
+                                        {
+                                            printerSupplyType: {
+                                                $arrayElemAt: [
+                                                    "$printerSupplyTypes",
+                                                    {
+                                                        "$indexOfArray": [
+                                                            "$printerSupplyTypes._id",
+                                                            "$$currentSupply.printerSupplyTypeId"
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
                             }
                         }
-                    }
-                },
-                {
-                    $project: {
-                        printerSupplyType: 0
                     }
                 }
             ]
